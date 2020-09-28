@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import {Year} from './../classes/calendarClasses'
 
 
 @Component({
@@ -7,14 +8,15 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./calendar.component.scss']
 })
 export class CalendarComponent implements OnInit {
-  @Input() calendarYear
+  @Input() yearCalendarObj: Year
 
   constructor() {
 
   }
 
   ngOnInit(): void {
-
+    console.log("Calendar year from parent in calendar component")
+    console.log(this.yearCalendarObj)
   }
 
 }

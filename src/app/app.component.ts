@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {DateManagerService} from './date-manager.service'
 import * as moment from 'moment'
+import {Year} from './classes/calendarClasses'
 
 @Component({
   selector: 'app-root',
@@ -8,11 +9,9 @@ import * as moment from 'moment'
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  currentYearCalendar = this.dateManager.createCalendar(moment().year());
+  currentYearCalendar: Year;
 
   constructor(private dateManager: DateManagerService) {
-    console.log('Calendar for the current year:');
-    console.log(this.currentYearCalendar);
-
+    this.currentYearCalendar = this.dateManager.createCalendar(moment().year());
   }
 }

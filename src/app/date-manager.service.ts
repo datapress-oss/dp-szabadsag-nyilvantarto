@@ -38,7 +38,7 @@ export class DateManagerService {
     date: moment.Moment,
     withHoliday: boolean = false
   ): Calendar.Month {
-    console.log('datttte', date);
+    //console.log('datttte', date);
     const monthCalendar: Calendar.Month = {
       title: date.format('MMMM'),
       weeks: this.generateWeeksOfMonth(date, withHoliday),
