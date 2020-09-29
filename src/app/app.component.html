@@ -1,3 +1,7 @@
-<app-calendar [month]="currentYearCalendar.months[0]"></app-calendar>
+<app-calendar
+  [month]="currentYearCalendar.months[0]"
+  (dayClickEvent)="daySelectEventHandler($event)"
+>
+</app-calendar>
 
 <router-outlet></router-outlet>

@@ -3,7 +3,7 @@
     <table>
       <tr *ngFor="let week of month.weeks">
         <td *ngFor="let day of week">
-          <p *ngIf="day">{{ day.date | date: 'd' }}</p>
+          <p *ngIf="day" (click)="onDayClick(day)">{{ day.date | date: 'd' }}</p>
         </td>
       </tr>
     </table>

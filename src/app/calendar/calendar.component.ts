@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {Month, Day} from './../classes/calendarClasses'
 import * as moment from 'moment'
 
@@ -10,23 +10,16 @@ import * as moment from 'moment'
 })
 export class CalendarComponent implements OnInit {
   @Input() month: Month
+  @Output() dayClickEvent = new EventEmitter<Day>();
 
-  public toMomentDay(dayDate) {
-    return dayDate.format('D')
+  onDayClick(day: Day) {
+    this.dayClickEvent.emit(day)
   }
-
-  private eventTest(input) {
-    console.log(input)
-  }
-
 
   constructor() {
   }
 
   ngOnInit(): void {
-    console.log(moment(this.month.weeks[0][6].date).format('E'))
-    console.log(this.month.weeks);
-
   }
 
 }
