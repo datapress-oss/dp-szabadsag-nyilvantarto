@@ -11,6 +11,7 @@ import * as moment from 'moment'
 export class CalendarComponent implements OnInit {
   @Input() month: Month
   @Output() dayClickEvent = new EventEmitter<Day>();
+  dayTags: Array<string> = ['Hé', 'Ke', 'Sze', 'Csü', 'Pé', 'Szo', 'Va'];
 
   onDayClick(day: Day) {
     this.dayClickEvent.emit(day)

@@ -1,9 +1,10 @@
 <div>
-  <h2>{{month.title}}</h2>
+  <h2>{{ month.title }}</h2>
     <table>
+      <th *ngFor="let tag of dayTags">{{ tag }}</th>
       <tr *ngFor="let week of month.weeks">
         <td *ngFor="let day of week">
-          <p *ngIf="day" (click)="onDayClick(day)">{{ day.date | date: 'd' }}</p>
+          <button type="button" class="btn" *ngIf="day" (click)="onDayClick(day)">{{ day.date | date: 'd' }}</button>
         </td>
       </tr>
     </table>
