@@ -1,24 +1,10 @@
-<!-- <div>
-<h2>{{      ||      }}</h2>
 <div>
-    <div *ngFor="let item of items">
-        <mat-card>
-            <mat-card-header>
-                <h2>{{      }}</h2>
-            </mat-card-header>
-            <mat-card-contant>
-                <table>
-                    <tr>
-                        <td *ngFor="let item of items">{{       }}</td>
-                    </tr>
-                    <tr *ngFor="let item of items">
-                        <td (click)="    ()" id="{{}}" *ngFor="let item of items">
-                            {{}}
-                        </td>
-                    </tr>
-                </table>
-            </mat-card-contant>
-        </mat-card>
-    </div>
+  <h2>{{month.title}}</h2>
+    <table>
+      <tr *ngFor="let week of month.weeks">
+        <td *ngFor="let day of week">
+          <p *ngIf="day">{{ day.date | date: 'd' }}</p>
+        </td>
+      </tr>
+    </table>
 </div>
-</div> -->

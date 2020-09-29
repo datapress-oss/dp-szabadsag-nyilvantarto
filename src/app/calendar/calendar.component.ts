@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {Year} from './../classes/calendarClasses'
+import {Month, Day} from './../classes/calendarClasses'
+import * as moment from 'moment'
 
 
 @Component({
@@ -8,15 +9,24 @@ import {Year} from './../classes/calendarClasses'
   styleUrls: ['./calendar.component.scss']
 })
 export class CalendarComponent implements OnInit {
-  @Input() yearCalendarObj: Year
+  @Input() month: Month
+
+  public toMomentDay(dayDate) {
+    return dayDate.format('D')
+  }
+
+  private eventTest(input) {
+    console.log(input)
+  }
+
 
   constructor() {
-
   }
 
   ngOnInit(): void {
-    console.log("Calendar year from parent in calendar component")
-    console.log(this.yearCalendarObj)
+    console.log(moment(this.month.weeks[0][6].date).format('E'))
+    console.log(this.month.weeks);
+
   }
 
 }
