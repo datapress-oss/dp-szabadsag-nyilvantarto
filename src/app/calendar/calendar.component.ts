@@ -1,7 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import {Month, Day} from './../classes/calendarClasses'
-import * as moment from 'moment'
-
+import {Day} from './../classes/calendarClasses'
 
 @Component({
   selector: 'app-calendar',
@@ -9,9 +7,10 @@ import * as moment from 'moment'
   styleUrls: ['./calendar.component.scss']
 })
 export class CalendarComponent implements OnInit {
-  @Input() month: Month
+  @Input() title: String
+  @Input() weeks: Array<Array<Day>>
+  @Input() weekdays: Array<String>
   @Output() dayClickEvent = new EventEmitter<Day>();
-  dayTags: Array<string> = ['Hé', 'Ke', 'Sze', 'Csü', 'Pé', 'Szo', 'Va'];
 
   onDayClick(day: Day) {
     this.dayClickEvent.emit(day)

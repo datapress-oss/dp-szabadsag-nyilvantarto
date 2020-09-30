@@ -3,15 +3,20 @@ table {
     text-align: center;
     .btn {
       padding: 0.4rem;
-      
+
       background-color: transparent;
-      
+
     }
     .whidth{
         width:10px ;
     }
   }
-  
-      
-  
- 
+
+#app-calendar-component {
+  text-align: center;
+  h2 {
+    width: 25rem;
+  }
+}
+
+
