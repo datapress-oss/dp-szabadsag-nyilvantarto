@@ -5,11 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { TestComponenetComponent } from './test-componenet/test-componenet.component';
+import {RouterModule} from '@angular/router';
 @NgModule({
   declarations: [
     AppComponent,
-    CalendarComponent
+    CalendarComponent,
+    TestComponenetComponent,
+    RouterModule
   ],
   imports: [
     BrowserModule,

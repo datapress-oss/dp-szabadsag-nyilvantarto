@@ -1,23 +1,27 @@
 import { Component } from '@angular/core';
-import {DateManagerService} from './date-manager.service'
-import * as moment from 'moment'
-import {Year, Day} from './classes/calendarClasses'
+import {RouterOutlet} from '@angular/router';
+
+import { HostBinding } from '@angular/core';
+import {slideInAnimation} from './animations';
+/* import { animation } from '@angular/animations'; */
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
+   
+   /*  slideInAnimation */
+   
 })
 export class AppComponent {
-  currentYearCalendar: Year;
-  lastClickedDay: Day
-
-  daySelectEventHandler($event: Day) {
-    this.lastClickedDay = $event
-    console.log(`Erre a napra kattintottál: ${this.lastClickedDay.date.format('YYYY MMM D')}`)
+ 
+  prepareRoute(outlet: RouterOutlet) {
+    return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;
   }
+ 
 
-  constructor(private dateManager: DateManagerService) {
-    this.currentYearCalendar = this.dateManager.createCalendar(moment().year());
+  constructor() {
+    
   }
 }
