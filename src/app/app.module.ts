@@ -6,18 +6,17 @@ import { AppComponent } from './app.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TestComponenetComponent } from './test-componenet/test-componenet.component';
-import {RouterModule} from '@angular/router';
+
 @NgModule({
   declarations: [
     AppComponent,
     CalendarComponent,
     TestComponenetComponent,
-    RouterModule
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

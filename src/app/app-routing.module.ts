@@ -6,7 +6,8 @@ const routes: Routes = [
   {
     path: 'test',
     component: TestComponenetComponent,
-  },
+    data: {animation: 'TestPage'}
+  }
 ];
 
 @NgModule({
