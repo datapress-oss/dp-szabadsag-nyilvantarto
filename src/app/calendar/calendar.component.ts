@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import {Day} from './../classes/calendarClasses'
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
+import { Year } from './../classes/calendarClasses';
 
 @Component({
   selector: 'app-calendar',
@@ -7,19 +7,31 @@ import {Day} from './../classes/calendarClasses'
   styleUrls: ['./calendar.component.scss']
 })
 export class CalendarComponent implements OnInit {
-  @Input() title: String
-  @Input() weeks: Array<Array<Day>>
-  @Input() weekdays: Array<String>
-  @Output() dayClickEvent = new EventEmitter<Day>();
+  @Input() calendarYear: Year;
+  @Input() currentMonth: number;
+  selectedMonth: number;
+  currentView = 'month';
+  preSelectedMonth: string;
 
-  onDayClick(day: Day) {
-    this.dayClickEvent.emit(day)
+  constructor() {}
+
+  // handle emitted event from year-view.component
+  monthSelectEventHandler($event: number): void {
+    this.selectedMonth = $event;
+    // when a month id selected, show that month as a calendar
+    this.currentView = 'month';
   }
 
-  constructor() {
+  // handle emitted event from month-view.component
+  selectNewMonthEventHandler($event: string): void {
+    this.preSelectedMonth = $event;
+    // when clicked on the month's name, allow selection from all 12 months
+    this.currentView = 'year';
   }
 
   ngOnInit(): void {
+    // set the default month to be the current month
+    this.selectedMonth = this.currentMonth;
   }
 
 }

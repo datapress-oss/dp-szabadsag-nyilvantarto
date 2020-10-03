@@ -1,0 +1,31 @@
+<div id="month-view">
+  <button
+    type="button"
+    class="btn monthTitle"
+    (click)="onMonthClick(monthTitle)"
+  >
+    <h3>{{ monthTitle }}</h3>
+  </button>
+  <table>
+    <tr>
+      <th
+        *ngFor="let day of weekdays"
+        class="weekdays pr-3"
+      >
+        {{ day }}
+      </th>
+    </tr>
+    <tr *ngFor="let row of rows;">
+      <td
+        *ngFor="let col of row;"
+      >
+        <button
+          class="btn btn-sm"
+          *ngIf="col"
+        >
+          {{ col.date | date: 'd' }}
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>

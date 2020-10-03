@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import {RouterOutlet} from '@angular/router'
-import {fadeAnimation} from './animations'
-
+import {RouterOutlet} from '@angular/router';
+import {fadeAnimation} from './animations';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-root',
@@ -13,11 +13,16 @@ import {fadeAnimation} from './animations'
 })
 export class AppComponent {
 
-  prepareRoute(outlet: RouterOutlet) {
-    console.log(outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation);
-
+  prepareRoute(outlet: RouterOutlet): string {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;
   }
 
-  constructor() {}
+  constructor() {
+    // setup moment local settings
+    // refer to: https://momentjs.com/docs/#/customization/weekday-abbreviations/
+    moment.locale('hu');
+    moment.updateLocale('hu', {
+      weekdaysShort: ['hét', 'kedd', 'sze', 'csüt', 'pén', 'szo', 'vas']
+    });
+  }
 }

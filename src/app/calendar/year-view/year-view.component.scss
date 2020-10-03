@@ -1,0 +1,15 @@
+#year-view {
+  width: 20rem;
+  button:hover {
+    color: rgb(170, 50, 50);
+  }
+}
+
+.preSelected {
+  background-color:  rgb(216, 172, 172);
+}
+
+.currentMonth {
+  border-style: solid;
+  border-color:  rgb(170, 50, 50);
+}

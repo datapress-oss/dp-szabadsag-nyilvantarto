@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {DateManagerService} from './../date-manager.service'
-import * as moment from 'moment'
-import {Year, Day} from './../classes/calendarClasses'
+import {DateManagerService} from './../date-manager.service';
+import * as moment from 'moment';
+import {Year} from './../classes/calendarClasses';
 
 @Component({
   selector: 'app-test-componenet',
@@ -10,13 +10,9 @@ import {Year, Day} from './../classes/calendarClasses'
 })
 export class TestComponenetComponent implements OnInit {
   currentYearCalendar: Year;
-  lastClickedDay: Day
+  currentMonth: number = Number(moment().format('M'));
 
-  daySelectEventHandler($event: Day) {
-    this.lastClickedDay = $event
-    console.log(`Erre a napra kattintottál: ${this.lastClickedDay.date.format('YYYY MMM D')}`)
-  }
-  constructor(private dateManager: DateManagerService) {   
+  constructor(private dateManager: DateManagerService) {
     this.currentYearCalendar = this.dateManager.createCalendar(moment().year());
   }
 

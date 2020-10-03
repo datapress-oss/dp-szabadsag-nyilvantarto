@@ -1,18 +1,9 @@
-<h2>Ez az éves nézet a calendar component demonstrációja</h2>
-<div class="container-fluid">
-  <div class="row">
-    <div
-      class="col-xs col-sm col-md col-lg col-xl"
-      *ngFor="let month of currentYearCalendar.months; index as i"
-    >
-      <app-calendar
-        [title]="currentYearCalendar.months[i].title"
-        [weeks]="currentYearCalendar.months[i].weeks"
-        [weekdays]="currentYearCalendar.weekdays"
-        (dayClickEvent)="daySelectEventHandler($event)"
-      >
-      </app-calendar>
-    </div>
-  </div>
-</div>
+<div id="test-route">
+  <h1>test route</h1>
 
+  <app-calendar
+    [currentMonth]="currentMonth"
+    [calendarYear]="currentYearCalendar"
+  >
+  </app-calendar>
+</div>
