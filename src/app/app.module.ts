@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TestComponenetComponent } from './test-componenet/test-componenet.component';
 import { YearViewComponent } from './calendar/year-view/year-view.component';
 import { MonthViewComponent } from './calendar/month-view/month-view.component';
+import { MonthViewRangeComponent } from './calendar/month-view-range/month-view-range.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { MonthViewComponent } from './calendar/month-view/month-view.component';
     TestComponenetComponent,
     YearViewComponent,
     MonthViewComponent,
+    MonthViewRangeComponent,
   ],
   imports: [
     BrowserModule,
