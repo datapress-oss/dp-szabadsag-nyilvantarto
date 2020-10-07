@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { Year } from './../classes/calendarClasses';
 import * as animation from './../animations';
-import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-calendar',
@@ -10,7 +9,7 @@ import { Router, RouterOutlet } from '@angular/router';
   animations: [
     animation.fadeAnimation,
   animation.fadeAnimation2
-  
+
   ]
 
 })
@@ -22,7 +21,7 @@ export class CalendarComponent implements OnInit {
   preSelectedMonth: string;
 
   constructor() {}
- 
+
 
   // handle emitted event from year-view.component
   monthSelectEventHandler($event: number): void {
@@ -36,6 +35,11 @@ export class CalendarComponent implements OnInit {
     this.preSelectedMonth = $event;
     // when clicked on the month's name, allow selection from all 12 months
     this.currentView = 'year';
+  }
+
+  // handle emitted event from month-view.component
+  selectNewDayEventHandler($event: Array<object>): void {
+    console.log($event);
   }
 
   ngOnInit(): void {
