@@ -1,7 +1,9 @@
 #year-view {
-  width: 20rem;
+  
+  
   button:hover {
     color: rgb(170, 50, 50);
+    
   }
 }
 
@@ -13,3 +15,15 @@
   border-style: solid;
   border-color:  rgb(170, 50, 50);
 }
+.monthTitle{
+  border-radius: 12px;
+  width:200px;
+  height: 50px;
+
+}
+.width{
+  width:20rem;
+  
+}
+
+

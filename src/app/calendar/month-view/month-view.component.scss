@@ -1,12 +1,27 @@
 #month-view {
   width: 20rem;
   text-align: center;
+
 }
 
 .monthTitle:hover {
-  color: rgb(170, 50, 50);
+  color:#ff6666;
+}
+.monthTitle{
+  border-radius: 12px;
 }
 
 .selectedDay {
-  background-color: rgb(170, 50, 50);
+  background-color:#ff8080;
+}
+.selectedDay:hover{
+  background-color: #ffcccc;
+}
+
+
+th, td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  font-size: large;
 }
