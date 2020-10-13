@@ -11,12 +11,15 @@
   border-radius: 12px;
 }
 
+
 .selectedDay {
   background-color:#ff8080;
 }
 .selectedDay:hover{
   background-color: #ffcccc;
 }
+button.btn:hover {outline: 0;
+  box-shadow: 0 0 0 .2rem rgba(0,123,255,.25); }
 
 
 th, td {
