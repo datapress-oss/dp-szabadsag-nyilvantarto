@@ -10,10 +10,11 @@ import {Year} from './../classes/calendarClasses';
 })
 export class TestComponenetComponent implements OnInit {
   currentYearCalendar: Year;
-  currentMonth: number = Number(moment().format('M'));
+  // currentMonth: number = Number(moment().format('M'));
 
   constructor(private dateManager: DateManagerService) {
     this.currentYearCalendar = this.dateManager.createCalendar(moment().year());
+    console.log(this.currentYearCalendar);
   }
 
   ngOnInit(): void {
