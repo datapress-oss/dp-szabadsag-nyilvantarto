@@ -33,6 +33,19 @@ export class MonthViewComponent implements OnInit {
     this.selectNewDay.emit(this.selectedDays);
   }
 
+  // checks wether a day is 1 digit or 2, for styling
+  is1CharLong(day: object): boolean {
+    const formattedDay = moment(day).format('D');
+    switch (formattedDay.length) {
+      case 1:
+        return true;
+      case 2:
+        return false;
+      default:
+        break;
+    }
+  }
+
   constructor() {
     // array must have a default value befure used in a method
     this.selectedDays = [];

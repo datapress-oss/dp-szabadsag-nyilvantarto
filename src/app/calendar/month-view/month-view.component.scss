@@ -16,13 +16,19 @@
 .selectedDay:hover{
   background-color: #ffcccc;
 }
-button.btn:hover {outline: 0;
-  box-shadow: 0 0 0 .2rem rgba(0,123,255,.25); }
+button.btn:hover {
+  outline: 0;
+  box-shadow: 0 0 0 .2rem rgba(0,123,255,.25);
+}
+
+.btn-1-char {
+  padding-right: 0.8rem;
+  padding-left: 0.8rem;
+}
 
 
 th, td {
-  padding: 15px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
+  padding: 1rem;
+  border-bottom: .2rem solid #ffcccc;
   font-size: large;
 }

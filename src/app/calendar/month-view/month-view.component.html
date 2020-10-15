@@ -6,7 +6,7 @@
   >
     <h3>{{ monthTitle }}</h3>
   </button>
-  <table>
+  <table class="table">
     <tr>
       <th
         *ngFor="let day of weekdays"
@@ -23,7 +23,8 @@
           class="btn btn-sm"
           *ngIf="col"
           [class.selectedDay]="selectedDays.includes(col)"
-          (click)="onDayClick(col)"
+          [class.btn-1-char]="is1CharLong(col.date)"
+          (click)="onDayClick(col);"
         >
           {{ col.date | date: 'd' }}
         </button>
