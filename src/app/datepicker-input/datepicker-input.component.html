@@ -1,1 +1,21 @@
-<p>datepicker-input works!</p>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-12 col-md-4 form-group">
+      <h4 class="title">{{ title }}</h4>
+      <input
+        #dp="bsDatepicker"
+        type="text"
+        placeholder="Datepicker"
+        class="form-control"
+        bsDatepicker
+        [bsConfig]="bsConfig"
+        [bsValue]="bsValue"
+        [(ngModel)]="bsValue"
+      >
+      <button class="btn btn-success align-center mt-3" (click)="onNewDate(bsValue)">
+        Hozzáad
+      </button>
+    </div>
+  </div>
+</div>
