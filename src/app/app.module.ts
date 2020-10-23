@@ -9,6 +9,7 @@ import { TestComponenetComponent } from './test-componenet/test-componenet.compo
 import { YearViewComponent } from './calendar/year-view/year-view.component';
 import { MonthViewComponent } from './calendar/month-view/month-view.component';
 import { MonthViewRangeComponent } from './calendar/month-view-range/month-view-range.component';
+import { DatepickerInputComponent } from './datepicker-input/datepicker-input.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { MonthViewRangeComponent } from './calendar/month-view-range/month-view-
     YearViewComponent,
     MonthViewComponent,
     MonthViewRangeComponent,
+    DatepickerInputComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,6 +27,7 @@ import { MonthViewRangeComponent } from './calendar/month-view-range/month-view-
     BrowserAnimationsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [DatepickerInputComponent]
 })
 export class AppModule { }
