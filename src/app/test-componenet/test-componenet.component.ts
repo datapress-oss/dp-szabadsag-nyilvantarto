@@ -10,7 +10,15 @@ import {Year} from './../classes/calendarClasses';
 })
 export class TestComponenetComponent implements OnInit {
   currentYearCalendar: Year;
-  // currentMonth: number = Number(moment().format('M'));
+
+  // handle new FreeDay event
+  newFreeDayEventHandler($event: Date): void {
+    console.log(`Új szabadnap: ${$event}`);
+  }
+
+  newWorkDayEventHandler($event: Date): void {
+    console.log(`Új munkanap: ${$event}`);
+  }
 
   constructor(private dateManager: DateManagerService) {
     this.currentYearCalendar = this.dateManager.createCalendar(moment().year());
