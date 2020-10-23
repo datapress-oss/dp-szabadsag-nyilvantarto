@@ -26,9 +26,25 @@ button.btn:hover {
   padding-left: 0.8rem;
 }
 
-
+// mobile
 th, td {
-  padding: 1rem;
+  padding: .1rem;
   border-bottom: .2rem solid #ffcccc;
   font-size: large;
+}
+
+// tablet
+@media only screen and (min-width: 458px) {
+  th, td {
+    padding: .5rem;
+    font-size: large;
+  }
+}
+
+// desktop
+@media only screen and (min-width: 800px) {
+  th, td {
+    padding: 1rem;
+    font-size: large;
+  }
 }
