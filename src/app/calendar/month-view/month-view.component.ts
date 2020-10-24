@@ -12,7 +12,7 @@ export class MonthViewComponent implements OnInit {
   @Input() monthTitle: string;
   @Output() selectNewMonth = new EventEmitter<string>();
   @Output() selectNewDay = new EventEmitter<Array<object>>();
-  weekdays: Array<string> = moment.weekdaysShort();
+  weekdays: Array<string> = moment.weekdaysMin(true);
   selectedDays: Array<object>;
 
   // emits the current month to calendar.component

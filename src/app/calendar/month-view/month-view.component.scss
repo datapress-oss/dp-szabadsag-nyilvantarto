@@ -2,23 +2,34 @@
   text-align: center;
 }
 
-.monthTitle:hover {
-  color:#ff6666;
-}
 .monthTitle{
   border-radius: 12px;
 }
 
+.monthTitle:hover {
+  color:#ff6666;
+}
 
 .selectedDay {
   background-color:#ff8080;
 }
+
 .selectedDay:hover{
   background-color: #ffcccc;
 }
+
+button.btn {
+  border-radius: 2rem;
+}
+
 button.btn:hover {
   outline: 0;
   box-shadow: 0 0 0 .2rem rgba(0,123,255,.25);
+  border-radius: 2rem;
+}
+
+button.btn:focus {
+  border-radius: 2rem;
 }
 
 .btn-1-char {
@@ -28,15 +39,15 @@ button.btn:hover {
 
 // mobile
 th, td {
-  padding: .1rem;
-  border-bottom: .2rem solid #ffcccc;
+  //padding: .1rem;
+  border-bottom: 1px solid #6b6b6b;
   font-size: large;
 }
 
 // tablet
 @media only screen and (min-width: 458px) {
   th, td {
-    padding: .5rem;
+    //padding: .5rem;
     font-size: large;
   }
 }
@@ -44,8 +55,16 @@ th, td {
 // desktop
 @media only screen and (min-width: 800px) {
   th, td {
-    padding: 1rem;
+    padding: .1rem;
     font-size: large;
   }
+}
+
+table {
+  width: inherit;
+}
+
+.weekdays {
+  color: lightgrey;
 }
 
