@@ -13,14 +13,24 @@ defineLocale('hu', huLocale);
 export class DatepickerInputComponent implements OnInit {
   @Input() title: string;
   @Input() theme: string;
-  @Output() addNewDate = new EventEmitter<Date>();
+  @Output() addNewDate = new EventEmitter<object>();
   bsConfig: Partial<BsDatepickerConfig>;
   bsValue = new Date();
+  bsDescription: string;
 
-  // emits the selected day
+  // emits the selected day with a description
   onNewDate(day: Date): void {
-    this.addNewDate.emit(day);
-    console.log(`Ezt a napot választottad ki: ${day}`);
+    // construct new obj
+    const newDate = {
+      date: day,
+      description: this.bsDescription
+    };
+    // send newDate to a parent component
+    this.addNewDate.emit(newDate);
+
+    // clear form values to default
+    this.bsValue = new Date();
+    this.bsDescription = '';
   }
 
   constructor(private localeService: BsLocaleService) {

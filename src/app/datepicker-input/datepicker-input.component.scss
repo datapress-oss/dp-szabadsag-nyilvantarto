@@ -7,13 +7,16 @@
   margin-left: auto;
   margin-right: auto;
 }
-.buttonRadius{
-  border-radius: 10px;
+
+.submit-btn {
+  color: white;
+  background-color: #f76868;
+  //border-radius: 10px;
+
 }
-.buttonColor{
- background-color: red;
-  
-}
-.buttonColor:hover{
- background-color: crimson;
+
+.submit-btn:hover {
+  background-color: #ff4747;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }

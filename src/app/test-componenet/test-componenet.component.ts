@@ -10,19 +10,25 @@ import {Year} from './../classes/calendarClasses';
 })
 export class TestComponenetComponent implements OnInit {
   currentYearCalendar: Year;
+  freeDays: Array<object> = [];
+  workDays: Array<object> = [];
 
   // handle new FreeDay event
-  newFreeDayEventHandler($event: Date): void {
-    console.log(`Új szabadnap: ${$event}`);
+  newFreeDayEventHandler($event: object): void {
+    this.freeDays.push($event);
+    console.log('Szabadnapok: ');
+    console.log(this.freeDays);
   }
 
-  newWorkDayEventHandler($event: Date): void {
-    console.log(`Új munkanap: ${$event}`);
+  // handle new WorkDay event
+  newWorkDayEventHandler($event: object): void {
+    this.workDays.push($event);
+    console.log('Munkanapok: ');
+    console.log(this.workDays);
   }
 
   constructor(private dateManager: DateManagerService) {
     this.currentYearCalendar = this.dateManager.createCalendar(moment().year());
-    console.log(this.currentYearCalendar);
   }
 
   ngOnInit(): void {
