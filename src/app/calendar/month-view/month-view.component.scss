@@ -4,14 +4,12 @@
 
 .monthTitle{
   border-radius: 12px;
-}
-
-.monthTitle:hover {
-  color:#ff6666;
+  color: #54708b;
 }
 
 .selectedDay {
   background-color:#ff8080;
+  color: white;
 }
 
 .selectedDay:hover{
@@ -39,7 +37,6 @@ button.btn:focus {
 
 // mobile
 th, td {
-  //padding: .1rem;
   border-bottom: 1px solid #6b6b6b;
   font-size: large;
 }
