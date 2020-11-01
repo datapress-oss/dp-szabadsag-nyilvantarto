@@ -1,25 +1,8 @@
-<div id="app-calendar-component">
-  <div [ngSwitch]="currentView">
-
-    <app-year-view
-    [@fadeAnimation2]
-      *ngSwitchCase="'year'"
-      [preSelectedMonth]="preSelectedMonth"
-      [currentMonth]="currentMonth"
-      (selectedMonth)="monthSelectEventHandler($event)"
-
-    >
-    </app-year-view>
-
-
+<div class="app-calendar-component">
     <app-month-view
-    [@fadeAnimation2]
-    *ngSwitchCase="'month'"
-      [monthTitle]="calendarYear.months[selectedMonth-1].title"
-      [rows]="calendarYear.months[selectedMonth-1].weeks"
-      (selectNewMonth)="selectNewMonthEventHandler($event)"
+      [monthTitle]="calendarYear.months[currentMonth-1].title"
+      [rows]="calendarYear.months[currentMonth-1].weeks"
       (selectNewDay)="selectNewDayEventHandler($event)"
     >
     </app-month-view>
-  </div>
 </div>
