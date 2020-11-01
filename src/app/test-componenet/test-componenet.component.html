@@ -20,7 +20,7 @@
   <h3>Calendar component</h3>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-xs col-sm col-md col-lg col-xl calendarBorder" *ngFor="let month of currentYearCalendar.months; index as i">
+      <div class="col-xs col-sm col-md col-lg col-xl-3 calendarBorder" *ngFor="let month of currentYearCalendar.months; index as i">
         <app-calendar
           [currentMonth]="i+1"
           [calendarYear]="currentYearCalendar"
