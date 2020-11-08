@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { DayStatus, Employee, mockEmployees } from './../../classes/summaryClasses';
+import { Employee, mockEmployees, nonWorkDays, extraWorkDays } from './../../classes/summaryClasses';
 import * as moment from 'moment';
 
 @Component({
@@ -25,6 +25,62 @@ export class MonthSummaryComponent implements OnInit {
     const rawDate = new Date(`${this.year}-${this.selectedMonth + 1}-${day}`);
     const name = moment(rawDate).format('dd');
     return name;
+  }
+
+  // check if current day is a leave day or not
+  isLeaveDay(day: number, employee: number): boolean {
+    const rawDate = new Date(`${this.year}-${this.selectedMonth + 1}-${day}`);
+    const momentDate = moment(rawDate);
+
+    for (const leaveDate of mockEmployees[employee].leaveDates) {
+      const isLeaveDay = momentDate.format('YYYY-MM-DD') === leaveDate.format('YYYY-MM-DD');
+      if (isLeaveDay) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  // check if current day is a nonWork day or not
+  isNonWorkDay(day: number): boolean {
+    const rawDate = new Date(`${this.year}-${this.selectedMonth + 1}-${day}`);
+    const momentDate = moment(rawDate);
+
+    for (const nonWorkDay of nonWorkDays) {
+      const isNonWorkDay = momentDate.format('YYYY-MM-DD') === nonWorkDay.format('YYYY-MM-DD');
+      if (isNonWorkDay) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  // check if current day is weekend or not
+  isWeekend(day: number): boolean {
+    const rawDate = new Date(`${this.year}-${this.selectedMonth + 1}-${day}`);
+    const momentDate = moment(rawDate);
+
+    if (momentDate.weekday() === 5 || momentDate.weekday() === 6) {
+      // return true if day is Saturday or Sunday (0-6 scale)
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  // check if current day is an extra work day or not
+  isExtraWorkDay(day: number): boolean {
+    const rawDate = new Date(`${this.year}-${this.selectedMonth + 1}-${day}`);
+    const momentDate = moment(rawDate);
+
+    for (const extraWorkDay of extraWorkDays) {
+      const isextraWorkDay = momentDate.format('YYYY-MM-DD') === extraWorkDay.format('YYYY-MM-DD');
+      if (isextraWorkDay) {
+        return true;
+      }
+    }
+    return false;
   }
 
   constructor() {}

@@ -10,14 +10,17 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let employee of employees">
+      <tr *ngFor="let employee of employees; let currentEmployeeIndex = index">
         <td class="employeeName">
           <p>{{ employee.name }}</p>
         </td>
         <td
-          *ngFor="let day of daysInMonth()"
+          *ngFor="let day of daysInMonth(); let currentDayIndex = index;"
+          class="workDay"
+          [class.nonWorkDay]="(isNonWorkDay(currentDayIndex+1) || isWeekend(currentDayIndex+1)) && !(isExtraWorkDay(currentDayIndex+1))"
+          [class.extraWorkDay]="isExtraWorkDay(currentDayIndex+1) && !(isLeaveDay(currentDayIndex+1, currentEmployeeIndex))"
+          [class.leaveDay]="isLeaveDay(currentDayIndex+1, currentEmployeeIndex) && !(isNonWorkDay(currentDayIndex+1))"
         >
-          <p>cella</p>
         </td>
       </tr>
     </tbody>

@@ -1,12 +1,6 @@
 // import moment to create mock data
 import * as moment from 'moment';
 
-export enum DayStatus {
-  NonWorking,
-  Work,
-  Leave
-}
-
 export interface Employee {
   name: string;
   leaveDates: Array<moment.Moment>;
@@ -17,19 +11,34 @@ export const mockEmployees: Array<Employee> = [
   {
     name: 'Balázs',
     leaveDates: [
-      moment('2020-12-12', 'YYY-MM-DD'),
-      moment('2020-11-22', 'YYY-MM-DD'),
-      moment('2020-11-23', 'YYY-MM-DD'),
-      moment('2020-11-24', 'YYY-MM-DD')
+      moment('2020-12-12', 'YYYY-MM-DD'),
+      moment('2020-11-22', 'YYYY-MM-DD'),
+      moment('2020-11-23', 'YYYY-MM-DD'),
+      moment('2020-11-24', 'YYYY-MM-DD'),
+      moment('2020-12-19', 'YYYY-MM-DD')
     ]
   },
   {
     name: 'Feri',
     leaveDates: [
-      moment('2020-12-11', 'YYY-MM-DD'),
-      moment('2020-11-21', 'YYY-MM-DD'),
-      moment('2020-11-22', 'YYY-MM-DD'),
-      moment('2020-11-23', 'YYY-MM-DD')
+      moment('2020-12-11', 'YYYY-MM-DD'),
+      moment('2020-11-21', 'YYYY-MM-DD'),
+      moment('2020-11-22', 'YYYY-MM-DD'),
+      moment('2020-11-23', 'YYYY-MM-DD')
     ]
   }
+];
+
+export const nonWorkDays = [
+  moment('2020-12-24', 'YYYY-MM-DD'),
+  moment('2020-12-25', 'YYYY-MM-DD'),
+  moment('2020-12-26', 'YYYY-MM-DD'),
+  moment('2020-12-27', 'YYYY-MM-DD'),
+  moment('2020-12-28', 'YYYY-MM-DD'),
+  moment('2020-12-29', 'YYYY-MM-DD')
+];
+
+export const extraWorkDays = [
+  moment('2020-12-12', 'YYYY-MM-DD'),
+  moment('2020-12-19', 'YYYY-MM-DD')
 ];

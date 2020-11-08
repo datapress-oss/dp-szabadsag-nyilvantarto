@@ -22,7 +22,6 @@ export class SummaryCalendarComponent implements OnInit {
     // convert to 0-11 format, to use it later with moment
     const month = (Number(moment().month(monthValue).format('M'))) - 1;
     this.selectedMonth = month;
-    console.log(`Selected: ${this.selectedMonth}, month arr number: ${month} month value: ${monthValue}`);
   }
 
   constructor(private fb: FormBuilder) {}
@@ -32,7 +31,7 @@ export class SummaryCalendarComponent implements OnInit {
     this.year = Number(moment().format('YYYY'));
 
     // set default value to the current month in the select form
-    this.selectedMonth = Number(moment().format('M'));
+    this.selectedMonth = Number(moment().format('M')) - 1;
     this.monthForm = this.fb.group({
       month: moment().format('MMMM')
     });
