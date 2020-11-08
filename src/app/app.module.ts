@@ -12,6 +12,7 @@ import { MonthViewComponent } from './calendar/month-view/month-view.component';
 import { DatepickerInputComponent } from './datepicker-input/datepicker-input.component';
 import { SummaryCalendarComponent } from './summary-calendar/summary-calendar.component';
 import { MonthSummaryComponent } from './summary-calendar/month-summary/month-summary.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { MonthSummaryComponent } from './summary-calendar/month-summary/month-su
     BrowserAnimationsModule,
     FormsModule,
     BsDatepickerModule.forRoot(),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

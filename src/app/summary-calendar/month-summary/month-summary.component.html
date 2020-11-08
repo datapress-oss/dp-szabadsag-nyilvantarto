@@ -1,1 +1,23 @@
-<p>month-summary works!</p>
+<div class="table-responsive">
+  <table class="table">
+    <tbody>
+      <tr>
+        <td></td> <!-- skip first cell with an empty col -->
+        <td *ngFor="let day of daysInMonth(); let i = index">
+          <p>{{ nameOfTheDay(i+1) }}</p>
+          <p>{{ i+1 }}</p>
+        </td>
+      </tr>
+      <tr *ngFor="let employee of employees">
+        <td class="employeeName">
+          <p>{{ employee.name }}</p>
+        </td>
+        <td
+          *ngFor="let day of daysInMonth()"
+        >
+          <p>cella</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
