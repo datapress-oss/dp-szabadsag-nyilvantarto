@@ -1,6 +1,6 @@
 <div class="table-responsive">
   <table class="table">
-    <tbody>
+    <thead>
       <tr>
         <td></td> <!-- skip first cell with an empty col -->
         <td *ngFor="let day of daysInMonth(); let i = index">
@@ -8,6 +8,8 @@
           <p>{{ i+1 }}</p>
         </td>
       </tr>
+    </thead>
+    <tbody>
       <tr *ngFor="let employee of employees">
         <td class="employeeName">
           <p>{{ employee.name }}</p>
