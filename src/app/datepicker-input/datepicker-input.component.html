@@ -7,6 +7,14 @@
   <div class="row">
     <div class="col d-flex justify-content-center">
       <input
+        type="text"
+        placeholder="Megnevezés"
+        class="form-control"
+        [(ngModel)]="bsDescription"
+      >
+    </div>
+    <div class="col d-flex justify-content-center">
+      <input
       #dp="bsDatepicker"
       type="text"
       placeholder="Dátum kiválasztása"
@@ -17,14 +25,7 @@
       [(ngModel)]="bsValue"
     >
     </div>
-    <div class="col d-flex justify-content-center">
-      <input
-        type="text"
-        placeholder="Megnevezés"
-        class="form-control"
-        [(ngModel)]="bsDescription"
-      >
-    </div>
+    
   </div>
   <div class="row">
     <div class="col">
