@@ -21,8 +21,5 @@ export class AppComponent {
     // setup moment local settings
     // refer to: https://momentjs.com/docs/#/customization/weekday-abbreviations/
     moment.locale('hu');
-    moment.updateLocale('hu', {
-      weekdaysShort: ['hét', 'kedd', 'sze', 'csüt', 'pén', 'szo', 'vas']
-    });
   }
 }
