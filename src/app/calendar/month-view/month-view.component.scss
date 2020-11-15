@@ -19,6 +19,12 @@
 
 button.btn {
   border-radius: 2rem;
+  width: 2rem;
+}
+
+.btn-1-char {
+  padding: .35rem .8rem .35rem .8rem;
+  width: 2.1rem !important;
 }
 
 button.btn:hover {
@@ -29,11 +35,6 @@ button.btn:hover {
 
 button.btn:focus {
   border-radius: 2rem;
-}
-
-.btn-1-char {
-  padding-right: 0.8rem;
-  padding-left: 0.8rem;
 }
 
 // mobile
