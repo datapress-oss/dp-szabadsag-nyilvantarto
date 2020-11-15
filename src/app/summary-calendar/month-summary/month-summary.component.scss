@@ -1,13 +1,36 @@
-table.table{
+table.table {
     border-collapse: separate;
     background-color:white;
     text-align: center;
-    }
-table.table td{
-    padding: 5px 2px;
+    width: 120vh;
 }
 
-table.table thead td{
+@media only screen and (min-width: 1200px) {
+  table.table {
+    width: 155vh;
+  }
+}
+
+@media only screen and (min-width: 1600px) {
+  table.table {
+    width: 170vh;
+  }
+}
+
+@media only screen and (min-width: 1920px) {
+  table.table {
+    width: 190vh;
+  }
+}
+
+table.table td {
+    padding: 0;
+    width: 18px;
+    height: 18px;
+    max-width: 100%;
+}
+
+table.table thead td {
     font-size: 13px;
     font-style: italic;
     border: solid 1px black;
@@ -16,7 +39,7 @@ table.table thead td{
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
 }
-table.table tbody td{
+table.table tbody td {
     border: solid 1px black;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
