@@ -17,6 +17,9 @@ export class DatepickerInputComponent implements OnInit {
   bsConfig: Partial<BsDatepickerConfig>;
   bsValue = new Date();
   bsDescription: string;
+  minDate: Date;
+  maxDate: Date;
+ 
 
   // emits the selected day with a description
   onNewDate(day: Date): void {
@@ -35,10 +38,13 @@ export class DatepickerInputComponent implements OnInit {
 
   constructor(private localeService: BsLocaleService) {
     this.localeService.use('hu');
+
   }
 
   ngOnInit(): void {
     this.bsConfig = { isAnimated: true, containerClass: this.theme };
+    this.minDate = new Date('2020-01-01');
+    this.maxDate =new Date('2020-12-31');
   }
 
 }
