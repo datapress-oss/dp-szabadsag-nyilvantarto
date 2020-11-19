@@ -19,7 +19,6 @@ export class DatepickerInputComponent implements OnInit {
   bsDescription: string;
   minDate: Date;
   maxDate: Date;
- 
 
   // emits the selected day with a description
   onNewDate(day: Date): void {
@@ -42,9 +41,10 @@ export class DatepickerInputComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const thisYear = new Date().getFullYear();
     this.bsConfig = { isAnimated: true, containerClass: this.theme };
-    this.minDate = new Date('2020-01-01');
-    this.maxDate =new Date('2020-12-31');
+    this.minDate = new Date(`${thisYear}-01-01`);
+    this.maxDate = new Date(`${thisYear}-12-31`);
   }
 
 }
