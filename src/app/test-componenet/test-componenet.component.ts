@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {DateManagerService} from './../date-manager.service';
 import * as moment from 'moment';
-import {Year} from './../classes/calendarClasses';
+import {Year, CustomeDay} from './../classes/calendarClasses';
 
 @Component({
   selector: 'app-test-componenet',
@@ -10,22 +10,14 @@ import {Year} from './../classes/calendarClasses';
 })
 export class TestComponenetComponent implements OnInit {
   currentYearCalendar: Year;
-  freeDays: Array<object> = [];
-  workDays: Array<object> = [];
-
-  // handle new FreeDay event
-  newFreeDayEventHandler($event: object): void {
-    this.freeDays.push($event);
-    console.log('Szabadnapok: ');
-    console.log(this.freeDays);
-  }
-
-  // handle new WorkDay event
-  newWorkDayEventHandler($event: object): void {
-    this.workDays.push($event);
-    console.log('Munkanapok: ');
-    console.log(this.workDays);
-  }
+  freeDaysMock: Array<CustomeDay> = [{
+    date: moment('2020-11-22'),
+    description: 'teszt szabadnap'
+  }];
+  workDaysMock: Array<CustomeDay> = [{
+    date: moment('2020-11-21'),
+    description: 'teszt munkanap'
+  }];
 
   constructor(private dateManager: DateManagerService) {
     this.currentYearCalendar = this.dateManager.createCalendar(moment().year());

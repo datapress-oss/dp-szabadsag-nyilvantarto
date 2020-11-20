@@ -5,7 +5,7 @@
     </div>
   </div>
   <div class="row mb-4">
-    <div class="col-4 d-flex justify-content-center">
+    <div class="col-xl-3 col-lg-3 col-md-5 col-sm-5">
       <input
         type="text"
         placeholder="Megnevezés"
@@ -13,7 +13,7 @@
         [(ngModel)]="bsDescription"
       >
     </div>
-    <div class="col-3">
+    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-3">
       <input
       #dp="bsDatepicker"
       type="text"
@@ -27,10 +27,32 @@
       [maxDate]="maxDate"
     >
     </div>
-    <div class="col">
+    <div class="col-1">
       <button class="btn btn-success" (click)="onNewDate(bsValue)">
         <fa-icon [icon]="faPlus"></fa-icon>
       </button>
     </div>
   </div>
+  <div class="row mb-2" *ngFor="let day of customeDays">
+    <div class="col-xl-3 col-lg-3 col-md-5 col-sm-5">
+      <div class="form-control">
+        <p>{{ day.description }}</p>
+      </div>
+    </div>
+    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-3">
+      <div class="form-control">
+        <p>{{ displayMomentDate(day.date) }}</p>
+      </div>
+    </div>
+    <div class="col-1">
+      <button class="btn btn-danger" (click)="onRemoveDate(day.date)">
+        <fa-icon [icon]="faTrash"></fa-icon>
+      </button>
+    </div>
+  </div>
+
+
+
+
+
 </div>

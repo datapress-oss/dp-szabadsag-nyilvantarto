@@ -8,14 +8,14 @@
   <app-datepicker-input
     title="Új szabadnap hozzáadása"
     theme="theme-red"
-    (addNewDate)="newFreeDayEventHandler($event)"
+    [customeDays]="freeDaysMock"
   >
   </app-datepicker-input>
   <hr>
   <app-datepicker-input
     title="Új munkanap hozzáadása"
     theme="theme-red"
-    (addNewDate)="newWorkDayEventHandler($event)"
+    [customeDays]="workDaysMock"
   >
   </app-datepicker-input>
   <hr>

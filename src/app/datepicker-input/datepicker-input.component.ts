@@ -1,5 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
 import { BsDatepickerConfig, BsLocaleService } from 'ngx-bootstrap/datepicker';
+import { CustomeDay } from './../classes/calendarClasses';
+import * as moment from 'moment';
 import { defineLocale } from 'ngx-bootstrap/chronos';
 import { huLocale } from 'ngx-bootstrap/locale';
 import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
@@ -12,9 +14,12 @@ defineLocale('hu', huLocale);
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DatepickerInputComponent implements OnInit {
+  dateFormat = 'YYYY-MM-DD';
   @Input() title: string;
   @Input() theme: string;
-  @Output() addNewDate = new EventEmitter<object>();
+  // array storing the custome days
+  @Input() customeDays: Array<CustomeDay> = [];
+  // calendar properties
   bsConfig: Partial<BsDatepickerConfig>;
   bsValue = new Date();
   bsDescription: string;
@@ -24,19 +29,28 @@ export class DatepickerInputComponent implements OnInit {
   faPlus = faPlus;
   faTrash = faTrash;
 
-  // emits the selected day with a description
+  displayMomentDate(date: moment.Moment): string {
+    return date.format('YYYY.MM.DD');
+  }
+
   onNewDate(day: Date): void {
-    // construct new obj
-    const newDate = {
-      date: day,
+    // construct new CustomeDay obj
+    const newDate: CustomeDay = {
+      date: moment(day, this.dateFormat),
       description: this.bsDescription
     };
-    // send newDate to a parent component
-    this.addNewDate.emit(newDate);
-
+    // add newDate to days arr
+    this.customeDays.push(newDate);
     // clear form values to default
     this.bsValue = new Date();
     this.bsDescription = '';
+  }
+
+  onRemoveDate(day: moment.Moment): void {
+    // remove the selected day
+    this.customeDays = this.customeDays.filter(customeDay => {
+      return customeDay.date.format(this.dateFormat) !== day.format(this.dateFormat);
+    });
   }
 
   constructor(private localeService: BsLocaleService) {

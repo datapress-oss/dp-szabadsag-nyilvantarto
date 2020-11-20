@@ -10,8 +10,13 @@ export interface MarkedDay {
 }
 
 export interface Day {
-  status: DayStatus
-  date: moment.Moment
+  status: DayStatus;
+  date: moment.Moment;
+}
+
+export interface CustomeDay {
+  date: moment.Moment;
+  description: string;
 }
 
 export interface Week {
