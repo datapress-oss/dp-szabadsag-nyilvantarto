@@ -13,6 +13,7 @@ import { DatepickerInputComponent } from './datepicker-input/datepicker-input.co
 import { SummaryCalendarComponent } from './summary-calendar/summary-calendar.component';
 import { MonthSummaryComponent } from './summary-calendar/month-summary/month-summary.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     FormsModule,
     BsDatepickerModule.forRoot(),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent],

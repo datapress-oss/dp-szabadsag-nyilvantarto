@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter
 import { BsDatepickerConfig, BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { defineLocale } from 'ngx-bootstrap/chronos';
 import { huLocale } from 'ngx-bootstrap/locale';
+import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 defineLocale('hu', huLocale);
 
 @Component({
@@ -19,6 +20,9 @@ export class DatepickerInputComponent implements OnInit {
   bsDescription: string;
   minDate: Date;
   maxDate: Date;
+  // icons
+  faPlus = faPlus;
+  faTrash = faTrash;
 
   // emits the selected day with a description
   onNewDate(day: Date): void {

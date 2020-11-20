@@ -1,11 +1,11 @@
-<div class="container">
-  <div class="row">
+<div class="container-fluid">
+  <div class="row mb-4">
     <div class="col">
       <h4 class="title">{{ title }}</h4>
     </div>
   </div>
-  <div class="row">
-    <div class="col d-flex justify-content-center">
+  <div class="row mb-4">
+    <div class="col-4 d-flex justify-content-center">
       <input
         type="text"
         placeholder="Megnevezés"
@@ -13,7 +13,7 @@
         [(ngModel)]="bsDescription"
       >
     </div>
-    <div class="col d-flex justify-content-center">
+    <div class="col-3">
       <input
       #dp="bsDatepicker"
       type="text"
@@ -27,12 +27,9 @@
       [maxDate]="maxDate"
     >
     </div>
-    
-  </div>
-  <div class="row">
     <div class="col">
-      <button class="btn align-center mt-3 submit-btn" (click)="onNewDate(bsValue)">
-        Hozzáad
+      <button class="btn btn-success" (click)="onNewDate(bsValue)">
+        <fa-icon [icon]="faPlus"></fa-icon>
       </button>
     </div>
   </div>
