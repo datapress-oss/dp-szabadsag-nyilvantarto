@@ -12,6 +12,11 @@ export class MonthSummaryComponent implements OnInit {
   @Input() selectedMonth: number;
   @Input() employees: Array<Employee>;
 
+  // get length of employee name
+  getEmployeeNameLength(name: string): number {
+    return name.length;
+  }
+
   // returns an array which size equals with the number of days in the selected month
   daysInMonth(): Array<number> {
     const numOfDays = moment().month(this.selectedMonth).daysInMonth();

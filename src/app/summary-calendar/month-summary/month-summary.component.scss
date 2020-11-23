@@ -2,13 +2,7 @@ table.table {
     border-collapse: separate;
     background-color:white;
     text-align: center;
-    width: 120vh;
-}
-
-@media only screen and (min-width: 1200px) {
-  table.table {
-    width: 1150px;
-  }
+    width: 194vh;
 }
 
 @media only screen and (min-width: 1500px) {
@@ -45,9 +39,12 @@ table.table tbody td {
     border-top-right-radius: 5px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+    padding: .5rem 0rem;
     vertical-align: middle;
+    p {
+      margin-bottom: 0rem;
+    }
 }
-
 
 .workDay {
     background-color: lightgreen;
@@ -67,4 +64,13 @@ table.table tbody td {
 .extraWorkDay {
   background-color: lightgreen;
   border:1 1 black;
+}
+
+.employeeName {
+  max-width: 48px !important;
+}
+
+.longName {
+  padding: 0px;
+  margin: 0px;
 }

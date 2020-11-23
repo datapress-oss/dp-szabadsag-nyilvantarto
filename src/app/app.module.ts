@@ -14,6 +14,7 @@ import { SummaryCalendarComponent } from './summary-calendar/summary-calendar.co
 import { MonthSummaryComponent } from './summary-calendar/month-summary/month-summary.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FormsModule,
     BsDatepickerModule.forRoot(),
     ReactiveFormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    TooltipModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],

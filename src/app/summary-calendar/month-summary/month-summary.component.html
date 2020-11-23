@@ -11,9 +11,24 @@
     </thead>
     <tbody>
       <tr *ngFor="let employee of employees; let currentEmployeeIndex = index">
-        <td class="employeeName">
-          <p>{{ employee.name }}</p>
-        </td>
+        <ng-template [ngIf]="getEmployeeNameLength(employee.name) <= 13" [ngIfElse]="longName">
+          <td class="employeeName">
+            <p>{{ employee.name }}</p>
+          </td>
+        </ng-template>
+        <ng-template #longName>
+          <td class="employeeName">
+            <button
+              class="longName btn"
+              [tooltip]='employee.name'
+              triggers="focus"
+            >
+              <p>
+                {{ employee.name.slice(0, 13) }}...
+              </p>
+          </button>
+          </td>
+        </ng-template>
         <td
           *ngFor="let day of daysInMonth(); let currentDayIndex = index;"
           class="workDay"
