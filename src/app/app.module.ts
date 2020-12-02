@@ -15,6 +15,7 @@ import { MonthSummaryComponent } from './summary-calendar/month-summary/month-su
 import { ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     DatepickerInputComponent,
     SummaryCalendarComponent,
     MonthSummaryComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
