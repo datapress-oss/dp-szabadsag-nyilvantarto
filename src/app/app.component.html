@@ -1,15 +1,17 @@
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <div>
-    <button routerLink="/test" routerLinkActive="Activate">Test</button>
-  </div>
-</nav>
-<app-navbar></app-navbar>
-<h1>HomePage</h1>
+<div id="app">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <div>
+      <button routerLink="/test" routerLinkActive="Activate">Test</button>
+    </div>
+  </nav>
+  <app-navbar></app-navbar>
 
-<div [@fadeAnimation]="prepareRoute(outlet)">
-  <router-outlet #outlet="outlet"></router-outlet>
+  <!-- <div [@fadeAnimation]="prepareRoute(outlet)">
+    <router-outlet #outlet="outlet"></router-outlet>
+  </div> -->
+  <router-outlet></router-outlet>
 </div>
 
 

@@ -1,0 +1,22 @@
+<div class="login-container">
+  <form>
+    <div class="form-group">
+      <label for="exampleFormControlInput1">Bejelentkezés</label>
+      <input
+        type="text"
+        class="form-control"
+        id="username"
+        placeholder="Felhasználónév"
+        [(ngModel)]="usernameInput"
+      >
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        placeholder="Jelszó"
+        [(ngModel)]="passwordInput"
+      >
+      <button type="submit" class="btn btn-primary" (click)="onLogIn()">Belép</button>
+    </div>
+  </form>
+</div>

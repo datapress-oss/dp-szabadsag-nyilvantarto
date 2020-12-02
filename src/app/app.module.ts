@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,10 +14,11 @@ import { MonthViewComponent } from './calendar/month-view/month-view.component';
 import { DatepickerInputComponent } from './datepicker-input/datepicker-input.component';
 import { SummaryCalendarComponent } from './summary-calendar/summary-calendar.component';
 import { MonthSummaryComponent } from './summary-calendar/month-summary/month-summary.component';
-import { ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { NavbarComponent } from './navbar/navbar.component';
+import { UserMenuComponent } from './navbar/user-menu/user-menu.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     SummaryCalendarComponent,
     MonthSummaryComponent,
     NavbarComponent,
+    UserMenuComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +42,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     ReactiveFormsModule,
     FontAwesomeModule,
     TooltipModule.forRoot(),
-    ButtonsModule.forRoot()
+    ButtonsModule.forRoot(),
+    BsDropdownModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],

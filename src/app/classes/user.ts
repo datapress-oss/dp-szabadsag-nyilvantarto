@@ -10,6 +10,11 @@ export interface User {
   roles: Array<role>;
 }
 
+export interface LoggedInUser {
+  username: string;
+  roles: Array<role>;
+}
+
 // mock data
 export const Users: Array<User> = [
   {
