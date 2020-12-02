@@ -11,7 +11,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let employee of employees; let currentEmployeeIndex = index">
-        <ng-template [ngIf]="getEmployeeNameLength(employee.name) <= 13" [ngIfElse]="longName">
+        <ng-template [ngIf]="getEmployeeNameLength(employee.name) <= 9" [ngIfElse]="longName">
           <td class="employeeName">
             <p>{{ employee.name }}</p>
           </td>
@@ -24,7 +24,7 @@
               triggers="focus"
             >
               <p>
-                {{ employee.name.slice(0, 13) }}...
+                {{ employee.name.slice(0, 9) }}...
               </p>
           </button>
           </td>
