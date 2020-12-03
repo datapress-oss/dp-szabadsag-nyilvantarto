@@ -1,22 +1,33 @@
 <div class="login-container">
-  <form>
-    <div class="form-group">
-      <label for="exampleFormControlInput1">Bejelentkezés</label>
-      <input
-        type="text"
-        class="form-control"
-        id="username"
-        placeholder="Felhasználónév"
-        [(ngModel)]="usernameInput"
-      >
-      <input
-        type="password"
-        class="form-control"
-        id="password"
-        placeholder="Jelszó"
-        [(ngModel)]="passwordInput"
-      >
-      <button type="submit" class="btn btn-primary" (click)="onLogIn()">Belép</button>
-    </div>
-  </form>
+  <ng-template [ngIf]="!isLoggedIn()" [ngIfElse]="loggedIn">
+    <form [formGroup]="userLoginForm">
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Bejelentkezés</label>
+        <input
+          type="text"
+          class="input form-control"
+          id="username"
+          placeholder="Felhasználónév"
+          formControlName="usernameInput"
+
+        >
+        <input
+          type="password"
+          class="input form-control"
+          id="password"
+          placeholder="Jelszó"
+          formControlName="passwordInput"
+
+        >
+        <button type="button" class="btn btn-primary" (click)="onLogIn()">Belép</button>
+      </div>
+    </form>
+  </ng-template>
+  <ng-template #loggedIn>
+    <h2>Már be vagy lépve!</h2>
+  </ng-template>
 </div>
+
+
+
+
