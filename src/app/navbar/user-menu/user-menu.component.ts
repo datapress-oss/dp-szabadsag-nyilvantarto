@@ -9,6 +9,7 @@ import { AuthService } from './../../auth.service';
 })
 export class UserMenuComponent implements OnInit {
   faUser = faUser;
+  isLoggedIn: boolean;
 
   onLogOut(): void {
     this.auth.logOut();
@@ -17,7 +18,7 @@ export class UserMenuComponent implements OnInit {
   constructor(private auth: AuthService) {}
 
   ngOnInit(): void {
-
+    this.isLoggedIn = this.auth.isLoggedIn();
   }
 
 }
