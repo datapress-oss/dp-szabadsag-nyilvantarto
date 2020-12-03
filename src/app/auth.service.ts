@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User, role, LoggedInUser, Users } from './classes/user';
 import { Router } from '@angular/router';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ export class AuthService {
     username: null,
     roles: []
   };
+  private userLogInEvent = new BehaviorSubject<LoggedInUser>(null);
 
   logIn(username: string, password: string): boolean {
     // compare input with stored data
@@ -19,6 +21,8 @@ export class AuthService {
         this.loggedInUser.username = user.username;
         this.loggedInUser.roles = user.roles;
         localStorage.setItem('loggedInUser', JSON.stringify(this.loggedInUser));
+        // emit login event with 'loggedInUser'
+        this.userLogInEvent.next(this.loggedInUser);
         this.router.navigate(['/test']);
         return true;
       }
@@ -38,6 +42,10 @@ export class AuthService {
     this.loggedInUser = null;
     localStorage.removeItem('loggedInUser');
     this.router.navigate(['/login']);
+  }
+
+  userLogInEventListener(): Observable<LoggedInUser> {
+    return this.userLogInEvent.asObservable();
   }
 
   constructor(private router: Router) {}

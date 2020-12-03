@@ -14,7 +14,7 @@
   >
     <ng-template [ngIf]="isLoggedIn" [ngIfElse]="loggedOut">
       <li role="menuitem">
-        <a class="dropdown-item" href="#">Felhasználó: </a></li>
+        <a class="dropdown-item" href="#">Felhasználó: {{ username }}</a></li>
       <li role="menuitem">
         <a class="dropdown-item" href="#">Profilom</a>
       </li>
