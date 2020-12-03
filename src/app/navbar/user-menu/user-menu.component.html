@@ -14,12 +14,12 @@
   >
     <ng-template [ngIf]="isLoggedIn" [ngIfElse]="loggedOut">
       <li role="menuitem">
-        <a class="dropdown-item" href="#">Felhasználó: {{ username }}</a></li>
+        <a class="dropdown-item">Felhasználó: {{ username }}</a></li>
       <li role="menuitem">
-        <a class="dropdown-item" href="#">Profilom</a>
+        <a class="dropdown-item">Profilom</a>
       </li>
       <li role="menuitem">
-        <a class="dropdown-item" href="#" (click)="onLogOut()">Kijelentkezés</a>
+        <a class="dropdown-item" (click)="onLogOut()">Kijelentkezés</a>
       </li>
     </ng-template>
     <ng-template #loggedOut>
