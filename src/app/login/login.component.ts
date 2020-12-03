@@ -9,6 +9,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class LoginComponent implements OnInit {
   usernameInput: string;
   passwordInput: string;
+  isLoggedIn: boolean;
   userLoginForm = new FormGroup({
     usernameInput: new FormControl(),
     passwordInput: new FormControl(),
@@ -20,17 +21,12 @@ export class LoginComponent implements OnInit {
 
   }
 
-  isLoggedIn(): boolean {
-    if (localStorage.getItem('loggedInUser') === null) {
-      return false;
-    }
-    return true;
-  }
+
 
   constructor(private auth: AuthService) {}
 
   ngOnInit(): void {
-    console.log(this.isLoggedIn());
+    this.isLoggedIn = this.auth.isLoggedIn();
   }
 
 }

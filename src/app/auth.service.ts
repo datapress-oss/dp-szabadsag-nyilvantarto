@@ -26,6 +26,13 @@ export class AuthService {
     return false;
   }
 
+  isLoggedIn(): boolean {
+    if (localStorage.getItem('loggedInUser') === null) {
+      return false;
+    }
+    return true;
+  }
+
   logOut(): void {
     // remove loggedInUser data
     this.loggedInUser = null;
