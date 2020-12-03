@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
 import { User, role, LoggedInUser, Users } from './classes/user';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  loggedInUser: LoggedInUser = null;
+  loggedInUser: LoggedInUser = {
+    username: null,
+    roles: []
+  };
 
   logIn(username: string, password: string): boolean {
     // compare input with stored data
@@ -15,6 +19,7 @@ export class AuthService {
         this.loggedInUser.username = user.username;
         this.loggedInUser.roles = user.roles;
         localStorage.setItem('loggedInUser', JSON.stringify(this.loggedInUser));
+        this.router.navigate(['/test']);
         return true;
       }
     });
@@ -25,7 +30,8 @@ export class AuthService {
     // remove loggedInUser data
     this.loggedInUser = null;
     localStorage.removeItem('loggedInUser');
+    this.router.navigate(['/login']);
   }
 
-  constructor() { }
+  constructor(private router: Router) {}
 }
