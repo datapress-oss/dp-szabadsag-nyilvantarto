@@ -18,7 +18,6 @@ export class LoginComponent implements OnInit {
 
   onLogIn(): void {
     this.auth.logIn(this.userLoginForm.value.usernameInput, this.userLoginForm.value.passwordInput);
-
   }
 
 

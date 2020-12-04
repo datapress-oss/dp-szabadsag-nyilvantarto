@@ -39,7 +39,8 @@ export class AuthService {
 
   logOut(): void {
     // remove loggedInUser data
-    this.loggedInUser = null;
+    this.loggedInUser.username = null;
+    this.loggedInUser.roles = null;
     localStorage.removeItem('loggedInUser');
     this.router.navigate(['/login']);
   }
