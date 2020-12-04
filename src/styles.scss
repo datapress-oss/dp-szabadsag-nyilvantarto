@@ -2,3 +2,8 @@
 html, body {
   height: 100%;
 }
+
+::selection {
+  color: black;
+  background: #dc3546a6;
+}
