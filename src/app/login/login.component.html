@@ -9,7 +9,7 @@
           id="username"
           placeholder="Felhasználónév"
           formControlName="usernameInput"
-
+          (keydown.enter)="onLogIn()"
         >
         <input
           type="password"
@@ -17,7 +17,7 @@
           id="password"
           placeholder="Jelszó"
           formControlName="passwordInput"
-
+          (keydown.enter)="onLogIn()"
         >
         <button type="button" class="btn btn-danger" (click)="onLogIn()">Belép</button>
       </div>
