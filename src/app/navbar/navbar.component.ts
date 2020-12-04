@@ -9,7 +9,6 @@ import { AuthService } from './../auth.service';
 export class NavbarComponent implements OnInit {
 
   isLoggedIn(): boolean {
-    console.log(this.auth.isLoggedIn());
     return this.auth.isLoggedIn();
   }
 

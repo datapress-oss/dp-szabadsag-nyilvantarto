@@ -5,7 +5,7 @@
     </div>
   </div>
   <div class="row mb-4">
-    <div class="col-xl-3 col-lg-3 col-md-5 col-sm-5">
+    <div class="col-xl-3 col-lg-3 col-md-5 col-sm-5 col-6">
       <input
         type="text"
         placeholder="Megnevezés"
@@ -13,7 +13,7 @@
         [(ngModel)]="bsDescription"
       >
     </div>
-    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-3">
+    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-3 col-4">
       <input
       #dp="bsDatepicker"
       type="text"
@@ -34,12 +34,12 @@
     </div>
   </div>
   <div class="row mb-2" *ngFor="let day of customeDays">
-    <div class="col-xl-3 col-lg-3 col-md-5 col-sm-5">
+    <div class="col-xl-3 col-lg-3 col-md-5 col-sm-5 col-6">
       <div class="form-control">
         <p>{{ day.description }}</p>
       </div>
     </div>
-    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-3">
+    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-3 col-4">
       <div class="form-control">
         <p>{{ displayMomentDate(day.date) }}</p>
       </div>
