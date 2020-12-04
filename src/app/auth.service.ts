@@ -15,18 +15,19 @@ export class AuthService {
 
   logIn(username: string, password: string): boolean {
     // compare input with stored data
-    Users.forEach((user: User) => {
-      if (username === user.username && password === user.password) {
-        // success
-        this.loggedInUser.username = user.username;
-        this.loggedInUser.roles = user.roles;
-        localStorage.setItem('loggedInUser', JSON.stringify(this.loggedInUser));
-        // emit login event with 'loggedInUser'
-        this.userLogInEvent.next(this.loggedInUser);
-        this.router.navigate(['/test']);
-        return true;
-      }
-    });
+    const foundUser = Users.find(
+      user => user.username === username && user.password === password
+    );
+    if (foundUser !== undefined) {
+      // success
+      this.loggedInUser.username = foundUser.username;
+      this.loggedInUser.roles = foundUser.roles;
+      localStorage.setItem('loggedInUser', JSON.stringify(this.loggedInUser));
+      // emit login event with 'loggedInUser'
+      this.userLogInEvent.next(this.loggedInUser);
+      this.router.navigate(['/test']);
+      return true;
+    }
     return false;
   }
 
