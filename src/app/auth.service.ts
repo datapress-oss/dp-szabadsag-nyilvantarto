@@ -25,7 +25,7 @@ export class AuthService {
       localStorage.setItem('loggedInUser', JSON.stringify(this.loggedInUser));
       // emit login event with 'loggedInUser'
       this.userLogInEvent.next(this.loggedInUser);
-      this.router.navigate(['/test']);
+      this.router.navigate(['/user']);
       return true;
     }
     return false;

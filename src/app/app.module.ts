@@ -19,6 +19,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { NavbarComponent } from './navbar/navbar.component';
 import { UserMenuComponent } from './navbar/user-menu/user-menu.component';
 import { LoginComponent } from './login/login.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { LoginComponent } from './login/login.component';
     NavbarComponent,
     UserMenuComponent,
     LoginComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,
