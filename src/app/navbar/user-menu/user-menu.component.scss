@@ -1,7 +1,17 @@
 li {
   cursor: pointer;
 }
+
 a:hover{
   background-color:  #dc3545;
   color: white;
+}
+
+.dropdown-item {
+  background-color:  transparent;
+  color: black;
+}
+
+ul {
+  width: 200px;
 }

@@ -13,13 +13,13 @@
         <a class="nav-link" href="#">Általános</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">user</a>
+        <a class="nav-link" routerLink="/user" routerLinkActive="Activate" *ngIf="isLoggedIn()">user</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">admin</a>
+        <a class="nav-link" *ngIf="isLoggedIn()">admin</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">boss</a>
+        <a class="nav-link" *ngIf="isLoggedIn()">boss</a>
       </li>
     </ul>
     <app-user-menu></app-user-menu>

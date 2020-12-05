@@ -1,5 +1,11 @@
-<div class="btn-group" dropdown container="body">
-  <button id="button-animated" dropdownToggle type="button" class="btn btn-danger dropdown-toggle" aria-controls="dropdown-animated">
+<div class="btn-group" dropdown container="body" [insideClick]="true">
+  <button
+    id="button-animated"
+    dropdownToggle
+    type="button"
+    class="btn btn-danger dropdown-toggle"
+    aria-controls="dropdown-animated"
+  >
     <fa-icon [icon]="faUser"></fa-icon> <span class="caret"></span>
   </button>
   <ul
@@ -20,9 +26,7 @@
       </li>
     </ng-template>
     <ng-template #loggedOut>
-      <li role="menuitem">
-        <a class="dropdown-item">Nincs bejelentkezve!</a>
-      </li>
+      <app-login class="dropdown-item"></app-login>
     </ng-template>
   </ul>
 </div>
