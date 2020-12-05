@@ -6,22 +6,23 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item" *ngIf="!isLoggedIn()">
+      <li class="nav-item" *ngIf="!isLoggedIn">
         <a class="nav-link" routerLink="/login" routerLinkActive="Activate">Bejelentkezés</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Általános</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/user" routerLinkActive="Activate" *ngIf="isLoggedIn()">user</a>
+        <a class="nav-link" routerLink="/user" routerLinkActive="Activate" *ngIf="isLoggedIn">user</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" *ngIf="isLoggedIn()">admin</a>
+        <a class="nav-link" *ngIf="isLoggedIn">admin</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" *ngIf="isLoggedIn()">boss</a>
+        <a class="nav-link" *ngIf="isLoggedIn">boss</a>
       </li>
     </ul>
-    <app-user-menu></app-user-menu>
+    <span *ngIf="isLoggedIn" class="pr-2"><i>Bejelentkezve: {{ loggedInUser.username }}</i></span>
+    <app-user-menu [isLoggedIn]="isLoggedIn" (logOutEvent)="logOutEventHandler()"></app-user-menu>
   </div>
 </nav>

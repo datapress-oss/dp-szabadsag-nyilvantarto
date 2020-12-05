@@ -1,4 +1,4 @@
-<div class="btn-group" dropdown [insideClick]="true" [isAnimated]="true">
+<div class="btn-group" dropdown [insideClick]="true">
   <button
     id="button-animated"
     dropdownToggle
@@ -16,8 +16,6 @@
     aria-labelledby="button-animated"
   >
     <ng-template [ngIf]="isLoggedIn" [ngIfElse]="loggedOut">
-      <li role="menuitem">
-        <a class="dropdown-item">Felhasználó: {{ username }}</a></li>
       <li role="menuitem">
         <a class="dropdown-item">Profilom</a>
       </li>
