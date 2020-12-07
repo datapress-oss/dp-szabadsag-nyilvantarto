@@ -3,7 +3,7 @@ li {
 }
 
 a:hover{
-  background-color:  #dc3545;
+  background-color: var(--red);
   color: white;
 }
 
@@ -20,4 +20,13 @@ ul {
   ul {
     transform: translateY(0px) translateX(-35%) !important;
   }
+}
+
+.btn {
+  background-color: var(--red);
+  color: white;
+}
+
+.btn:hover {
+  background-color: var(--red-hover);
 }

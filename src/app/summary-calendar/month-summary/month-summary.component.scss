@@ -2,24 +2,12 @@ table.table {
     border-collapse: separate;
     background-color:white;
     text-align: center;
-    width: 1100px;
-}
-
-@media only screen and (min-width: 1500px) {
-  table.table {
-    width: 1450px;
-  }
-}
-
-@media only screen and (min-width: 1900px) {
-  table.table {
-    width: 1850px;
-  }
+    width: 105rem;
 }
 
 table.table td {
-    padding: 0;
-    width: 18px;
+    padding: 0rem;
+    min-width: 24px;
     height: 18px;
     max-width: 100%;
 }
@@ -47,12 +35,12 @@ table.table tbody td {
 }
 
 .workDay {
-    background-color: lightgreen;
+    background-color: var(--green);
     border:1 1 black;
 }
 
 .leaveDay {
-  background-color: red;
+  background-color: var(--red);
   border: 1 1 black;
 }
 
@@ -62,7 +50,7 @@ table.table tbody td {
 }
 
 .extraWorkDay {
-  background-color: lightgreen;
+  background-color: var(--green);
   border:1 1 black;
 }
 
@@ -75,5 +63,5 @@ table.table tbody td {
   margin: 0px;
 }
 .longName:focus{
-  color: red;
+  color: var(--red);
 }

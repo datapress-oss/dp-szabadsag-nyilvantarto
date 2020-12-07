@@ -5,16 +5,15 @@
 
 .monthTitle{
   border-radius: 12px;
-  color: #54708b;
 }
 
 .selectedDay {
-  background-color:#ff8080;
+  background-color:var(--red);
   color: white;
 }
 
 .selectedDay:hover{
-  background-color: #ffcccc;
+  background-color: var(--red-hover);
 }
 
 button.btn {

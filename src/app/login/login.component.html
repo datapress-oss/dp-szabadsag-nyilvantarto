@@ -2,18 +2,17 @@
   <ng-template [ngIf]="!isLoggedIn" [ngIfElse]="loggedIn">
     <form [formGroup]="userLoginForm">
       <div class="form-group">
-        <label for="exampleFormControlInput1">Bejelentkezés</label>
+        Felhasználónév
         <input
           type="text"
           class="input form-control"
-          placeholder="Felhasználónév"
           formControlName="usernameInput"
           (keydown.enter)="onLogIn()"
         >
+        Jelszó
         <input
           type="password"
           class="input form-control"
-          placeholder="Jelszó"
           formControlName="passwordInput"
           (keydown.enter)="onLogIn()"
         >

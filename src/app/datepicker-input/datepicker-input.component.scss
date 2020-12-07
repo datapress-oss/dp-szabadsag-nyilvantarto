@@ -2,8 +2,8 @@
   margin-bottom: 1rem;
 }
 
-div.form-control {
-  overflow-x: auto;
+.output {
+  padding-left: .5rem;
 }
 
 .title {
@@ -18,13 +18,20 @@ div.form-control {
 
 .submit-btn {
   color: white;
-  background-color: #f76868;
+  background-color: var(--green);
   //border-radius: 10px;
 
 }
 
 .submit-btn:hover {
-  background-color: #ff4747;
-  outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  background-color: var(--green-hover);
+}
+
+.delete-btn {
+  color: white;
+  background-color: var(--red);
+}
+
+.delete-btn:hover {
+  background-color: var(--red-hover);
 }
