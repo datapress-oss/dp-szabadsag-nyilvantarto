@@ -1,11 +1,37 @@
-<p>
-    <a class="btn color" data-toggle="collapse" href="#Collapse" role="button" aria-expanded="false" aria-controls="Collapse">Felhasználó összegzése</a>
-</p>
-<div class="row">
-    <div class="col">
-      <div class="collapse multi-collapse" id="Collapse">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col d-flex justify-content-center">
+      <button
+        class="btn collapseBtn"
+        data-toggle="collapse"
+        href="#userSummary"
+        role="button"
+        aria-expanded="false"
+        aria-controls="Collapse"
+      >
+        Felhasználó összegzése
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col d-flex justify-content-center">
+      <div class="collapse multi-collapse" id="userSummary">
         <div class="card card-body">
           Összegzet adataid:
         </div>
       </div>
     </div>
+  </div>
+  <div class="row">
+    <div
+      class="col-xl-3 col-lg-4 col-md col-sm-6 col-xs-12 col-12 mb-5"
+      *ngFor="let month of currentYearCalendar.months; index as i"
+    >
+      <app-calendar
+        [currentMonth]="i+1"
+        [calendarYear]="currentYearCalendar"
+      >
+      </app-calendar>
+    </div>
+  </div>
+</div>

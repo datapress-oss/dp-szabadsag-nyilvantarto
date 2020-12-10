@@ -1,6 +1,15 @@
-.color{
-    background-color: var(--red);
+.row {
+  padding-bottom: 2rem;
 }
-.color:hover{
-    color: white;
+
+.collapseBtn {
+  background-color: var(--red);
+}
+
+.collapseBtn:hover {
+  background-color: var(--red-hover);
+}
+
+#userSummary {
+  width: 100%;
 }
