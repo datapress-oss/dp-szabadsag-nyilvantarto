@@ -14,7 +14,7 @@ defineLocale('hu', huLocale);
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DatepickerInputComponent implements OnInit {
-  dateFormat = 'YYYY-MM-DD';
+  private dateFormat = 'YYYY-MM-DD';
   @Input() title: string;
   @Input() theme: string;
   // array storing the custome days
@@ -22,7 +22,7 @@ export class DatepickerInputComponent implements OnInit {
   // calendar properties
   bsConfig: Partial<BsDatepickerConfig>;
   bsValue = new Date();
-  bsDescription: string;
+  bsDescription = '';
   minDate: Date;
   maxDate: Date;
   // icons
@@ -33,7 +33,7 @@ export class DatepickerInputComponent implements OnInit {
     return date.format('YYYY.MM.DD');
   }
 
-  onNewDate(day: Date): void {
+  private addNewDate(day: Date): void {
     // construct new CustomeDay obj
     const newDate: CustomeDay = {
       date: moment(day, this.dateFormat),
@@ -46,6 +46,14 @@ export class DatepickerInputComponent implements OnInit {
     this.bsDescription = '';
   }
 
+  onNewDate(day: Date): void {
+    console.log(this.bsDescription);
+    // validate description (must not be empty)
+    if (!(this.bsDescription === '' || this.bsDescription === null)) {
+      this.addNewDate(day);
+    }
+  }
+
   onRemoveDate(day: moment.Moment): void {
     // remove the selected day
     this.customeDays = this.customeDays.filter(customeDay => {
@@ -55,7 +63,6 @@ export class DatepickerInputComponent implements OnInit {
 
   constructor(private localeService: BsLocaleService) {
     this.localeService.use('hu');
-
   }
 
   ngOnInit(): void {
