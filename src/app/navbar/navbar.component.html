@@ -1,9 +1,10 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-  <img width="80" height="80" src="https://raw.githubusercontent.com/datapress-oss/dp-web/8514c7fa8bbdbd48b9820027fbd448a9aa610293/src/client/assets/img/logos/dp_logo_2012.svg">
-  <span class="navbar-brand">Hopla</span>
+    <img width="80" height="80" src="https://raw.githubusercontent.com/datapress-oss/dp-web/8514c7fa8bbdbd48b9820027fbd448a9aa610293/src/client/assets/img/logos/dp_logo_2012.svg">
+  <span class="font">Hopla</span>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
-  </button>
+  </button> 
+   
 
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -23,8 +24,10 @@
       <li class="nav-item" *ngIf="isLoggedIn && loggedInUser.roles[2] !== (null || undefined)">
         <a class="nav-link">boss</a>
       </li>
+    
     </ul>
     <span *ngIf="isLoggedIn" class="pr-2"><i>Bejelentkezve: {{ loggedInUser.username }}</i></span>
     <app-user-menu [isLoggedIn]="isLoggedIn" (logOutEvent)="logOutEventHandler()"></app-user-menu>
   </div>
 </nav>
+<div>
