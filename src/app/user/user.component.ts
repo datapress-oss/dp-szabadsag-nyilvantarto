@@ -4,6 +4,7 @@ import * as moment from 'moment';
 import { Year } from './../classes/calendarClasses';
 import { mockEmployees, Employee } from './../classes/summaryClasses';
 import { LoggedInUser } from './../classes/user';
+import { AuthService } from './../auth.service';
 
 @Component({
   templateUrl: './user.component.html',
@@ -13,18 +14,14 @@ export class UserComponent implements OnInit {
   currentYearCalendar: Year;
   currentUser: Employee;
 
-  constructor(private dateManager: DateManagerService) {
+  constructor(private dateManager: DateManagerService, private auth: AuthService) {
     this.currentYearCalendar = this.dateManager.createCalendar(moment().year());
   }
 
   ngOnInit(): void {
-    // dind current employee obj
-    const loggedInUser: LoggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
-    mockEmployees.forEach(employee => {
-      if (loggedInUser.username === employee.name) {
-        this.currentUser = employee;
-      }
-    });
+    // find current employee based on the loggedIn user
+    this.currentUser = mockEmployees.find(
+      user => user.name === this.auth.loggedInUser.username
+    );
   }
-
 }

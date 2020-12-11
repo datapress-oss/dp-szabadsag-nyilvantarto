@@ -22,7 +22,6 @@ export class AuthService {
       // success
       this.loggedInUser.username = foundUser.username;
       this.loggedInUser.roles = foundUser.roles;
-      localStorage.setItem('loggedInUser', JSON.stringify(this.loggedInUser));
       // emit login event with 'loggedInUser'
       this.userLogInEvent.next(this.loggedInUser);
       this.router.navigate(['/user']);

@@ -17,7 +17,7 @@
   >
     <ng-template [ngIf]="isLoggedIn" [ngIfElse]="loggedOut">
       <li role="menuitem">
-        <a class="dropdown-item">Profilom</a>
+        <a class="dropdown-item" routerLink="/user" routerLinkActive="Activate">Profilom</a>
       </li>
       <li role="menuitem">
         <a class="dropdown-item" (click)="onLogOut()">Kijelentkezés</a>

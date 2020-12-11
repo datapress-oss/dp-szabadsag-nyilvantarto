@@ -14,8 +14,7 @@ export class NavbarComponent implements OnInit {
   private setUser(): void {
     this.isLoggedIn = true;
     // get latest user obj from localStorage
-    const user: LoggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
-    this.loggedInUser = user;
+    this.loggedInUser = this.auth.loggedInUser;
   }
 
   public logOutEventHandler(): void {
