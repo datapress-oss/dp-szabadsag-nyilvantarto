@@ -15,7 +15,6 @@ defineLocale('hu', huLocale);
 })
 export class DatepickerInputComponent implements OnInit {
   private dateFormat = 'YYYY-MM-DD';
-  @Input() title: string;
   @Input() theme: string;
   // array storing the custome days
   @Input() customeDays: Array<CustomeDay> = [];
