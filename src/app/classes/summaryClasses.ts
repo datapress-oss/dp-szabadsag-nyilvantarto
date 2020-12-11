@@ -9,7 +9,7 @@ export interface Employee {
 // mock data
 export const mockEmployees: Array<Employee> = [
   {
-    name: 'Nyirfa Balázs',
+    name: 'Balazs',
     leaveDates: [
       moment('2020-12-12', 'YYYY-MM-DD'),
       moment('2020-11-22', 'YYYY-MM-DD'),
