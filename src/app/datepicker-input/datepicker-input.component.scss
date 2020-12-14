@@ -4,6 +4,10 @@
 
 .output {
   padding-left: .5rem;
+  p {
+    margin-bottom: 0rem;
+    padding: 1rem;
+  }
 }
 
 .title {
@@ -14,24 +18,4 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-}
-
-.submit-btn {
-  color: white;
-  background-color: var(--green);
-  //border-radius: 10px;
-
-}
-
-.submit-btn:hover {
-  background-color: var(--green-hover);
-}
-
-.delete-btn {
-  color: white;
-  background-color: var(--red);
-}
-
-.delete-btn:hover {
-  background-color: var(--red-hover);
 }

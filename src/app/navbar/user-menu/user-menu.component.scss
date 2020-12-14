@@ -2,16 +2,6 @@ li {
   cursor: pointer;
 }
 
-a:hover{
-  background-color: var(--red);
-  color: white;
-}
-
-.dropdown-item {
-  background-color:  transparent;
-  color: black;
-}
-
 ul {
   width: 200px;
 }
@@ -22,11 +12,6 @@ ul {
   }
 }
 
-.btn {
-  background-color: var(--red);
-  color: white;
-}
 
-.btn:hover {
-  background-color: var(--red-hover);
-}
+
+

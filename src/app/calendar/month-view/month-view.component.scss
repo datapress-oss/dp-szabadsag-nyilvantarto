@@ -3,38 +3,20 @@
   width: 300px;
 }
 
-.monthTitle{
-  border-radius: 12px;
-}
-
 .selectedDay {
   background-color:var(--red);
-  color: white;
-}
-
-.selectedDay:hover{
-  background-color: var(--red-hover);
-}
-
-button.btn {
-  border-radius: 2rem;
-  width: 2rem;
+  color: var(--light);
 }
 
 .btn-1-char {
-  padding: .35rem .8rem .35rem .8rem;
-  width: 2.1rem !important;
+  width: 2rem !important;
 }
 
 button.btn:hover {
   outline: 0;
   box-shadow: 0 0 0 .2rem rgba(0,123,255,.25);
-  border-radius: 2rem;
 }
 
-button.btn:focus {
-  border-radius: 2rem;
-}
 
 // mobile
 th, td {

@@ -1,17 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 
-:root {
-  --red: #f44336;
-  --red-hover: #b71c1c;
-  --green: #4CAF50;
-  --green-hover: #388E3C;
-}
-
 html, body {
   height: 100%;
-}
-
-::selection {
-  color: white;
-  background: var(--red);
 }

@@ -1,6 +1,5 @@
 table.table {
     border-collapse: separate;
-    background-color:white;
     text-align: center;
     width: 105rem;
 }
@@ -45,7 +44,7 @@ table.table tbody td {
 }
 
 .nonWorkDay {
-    background-color: dimgray;
+    background-color: var(--gray-dark);
     border:1 1 black;
 }
 

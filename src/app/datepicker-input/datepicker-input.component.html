@@ -1,19 +1,19 @@
 <div class="container-fluid">
   <div class="row mb-4">
-    <div class="col-xl-3 col-lg-3 col-md-5 col-sm-5 col-6">
+    <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
       <input
         type="text"
         placeholder="Megnevezés"
-        class="form-control"
+        class="form-control bg-light"
         [(ngModel)]="bsDescription"
       >
     </div>
-    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-3 col-4">
+    <div class="col-xl-1 col-lg-2 col-md-3 col-sm-3 col-4">
       <input
       #dp="bsDatepicker"
       type="text"
       placeholder="Dátum kiválasztása"
-      class="form-control"
+      class="form-control bg-light"
       bsDatepicker
       [bsConfig]="bsConfig"
       [bsValue]="bsValue"
@@ -23,24 +23,24 @@
     >
     </div>
     <div class="col-1">
-      <button class="btn submit-btn" (click)="onNewDate(bsValue)">
+      <button class="btn btn-success" (click)="onNewDate(bsValue)">
         <fa-icon [icon]="faPlus"></fa-icon>
       </button>
     </div>
   </div>
   <div class="row mb-2" *ngFor="let day of customeDays">
-    <div class="col-xl-3 col-lg-3 col-md-5 col-sm-5 col-6">
+    <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6 p-0 border border-dark">
       <div class="output">
         <p>{{ day.description }}</p>
       </div>
     </div>
-    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-3 col-4">
+    <div class="col-xl-1 col-lg-2 col-md-3 col-sm-3 col-4 p-0 border border-dark">
       <div class="output">
         <p>{{ displayMomentDate(day.date) }}</p>
       </div>
     </div>
-    <div class="col-1">
-      <button class="btn delete-btn" (click)="onRemoveDate(day.date)">
+    <div class="col-1 pt-2">
+      <button class="btn btn-danger" (click)="onRemoveDate(day.date)">
         <fa-icon [icon]="faTrash"></fa-icon>
       </button>
     </div>
