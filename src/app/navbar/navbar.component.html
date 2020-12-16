@@ -21,6 +21,9 @@
       <li class="nav-item" *ngIf="isLoggedIn && loggedInUser.roles[2] !== (null || undefined)">
         <a class="nav-link">boss</a>
       </li>
+      <li class="nav-item">
+        <app-theme-switcher></app-theme-switcher>
+      </li>
     </ul>
     <span *ngIf="isLoggedIn" class="pr-2 text-light"><i>Bejelentkezve: {{ loggedInUser.username }}</i></span>
     <app-user-menu [isLoggedIn]="isLoggedIn" (logOutEvent)="logOutEventHandler()"></app-user-menu>

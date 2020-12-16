@@ -1,0 +1,13 @@
+<div class="btn-group" dropdown>
+  <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+          aria-controls="dropdown-basic">
+    Témák <span class="caret"></span>
+  </button>
+  <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu">
+    <li class="p-1" role="menuitem" *ngFor="let theme of themes" (click)="changeTheme(theme)">
+      <button class="btn btn-warning">
+        {{ theme }}
+      </button>
+    </li>
+  </ul>
+</div>

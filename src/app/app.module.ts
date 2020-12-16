@@ -21,6 +21,7 @@ import { UserMenuComponent } from './navbar/user-menu/user-menu.component';
 import { LoginComponent } from './login/login.component';
 import { UserComponent } from './user/user.component';
 import { AdminComponent } from './admin/admin.component';
+import { ThemeSwitcherComponent } from './navbar/theme-switcher/theme-switcher.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { AdminComponent } from './admin/admin.component';
     LoginComponent,
     UserComponent,
     AdminComponent,
+    ThemeSwitcherComponent,
   ],
   imports: [
     BrowserModule,
