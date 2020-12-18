@@ -3,13 +3,12 @@
     id="button-animated"
     dropdownToggle
     type="button"
-    class="btn btn-danger dropdown-toggle"
+    class="btn dropdown-toggle text-white"
     aria-controls="dropdown-animated"
   >
     <fa-icon [icon]="faUser"></fa-icon> <span class="caret"></span>
   </button>
   <ul
-    id="dropdown-animated"
     *dropdownMenu
     class="dropdown-menu text-center"
     role="menu"
@@ -24,9 +23,9 @@
       </li>
     </ng-template>
     <ng-template #loggedOut>
-      <button class="btn btn-danger" type="button" routerLink="/login" routerLinkActive="Activate">
-        Bejelentkezés
-      </button>
+      <li role="menuitem" routerLink="/login" routerLinkActive="Activate">
+        <a class="dropdown-item" (click)="onLogOut()">Bejelentkezés</a>
+      </li>
     </ng-template>
   </ul>
 </div>

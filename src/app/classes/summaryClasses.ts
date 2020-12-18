@@ -35,7 +35,16 @@ export const mockEmployees: Array<Employee> = [
       moment('2020-11-25', 'YYYY-MM-DD'),
       moment('2020-11-30', 'YYYY-MM-DD')
     ]
-  }
+  },
+  {
+    name: 'dobii',
+    leaveDates: [
+      moment('2020-12-02', 'YYYY-MM-DD'),
+      moment('2020-11-27', 'YYYY-MM-DD'),
+      moment('2020-11-25', 'YYYY-MM-DD'),
+      moment('2020-11-30', 'YYYY-MM-DD')
+    ]
+  },
 ];
 
 export const nonWorkDays = [

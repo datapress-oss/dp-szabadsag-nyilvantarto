@@ -23,5 +23,6 @@ export class UserComponent implements OnInit {
     this.currentUser = mockEmployees.find(
       user => user.name === this.auth.loggedInUser.username
     );
+    console.log(this.currentUser);
   }
 }

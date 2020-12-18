@@ -10,10 +10,11 @@ import { LoggedInUser, role } from './../classes/user';
 export class NavbarComponent implements OnInit {
   isLoggedIn: boolean;
   loggedInUser: LoggedInUser;
+  role = role;
 
   private setUser(): void {
     this.isLoggedIn = true;
-    // get latest user obj from localStorage
+    // get latest user obj from auth service
     this.loggedInUser = this.auth.loggedInUser;
   }
 
@@ -28,10 +29,10 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
 
-    if (this.auth.isLoggedIn()) {
-      // set user if already logged in
-      this.setUser();
-    }
+    // if (this.auth.isLoggedIn()) {
+    //   // set user if already logged in
+    //   this.setUser();
+    // }
     this.auth.userLogInEventListener().subscribe(userLogIn => {
       // skip userLogIn with value of null
       if (userLogIn !== null) {

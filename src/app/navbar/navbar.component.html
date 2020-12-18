@@ -12,20 +12,22 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/" routerLinkActive="Activate">Általános</a>
       </li>
-      <li class="nav-item" *ngIf="isLoggedIn && loggedInUser.roles[0] !== (null || undefined)">
+      <li class="nav-item" *ngIf="isLoggedIn && loggedInUser.roles[0] === role.User">
         <a class="nav-link" routerLink="/user" routerLinkActive="Activate">user</a>
       </li>
-      <li class="nav-item" *ngIf="isLoggedIn && loggedInUser.roles[1] !== (null || undefined)">
+      <li class="nav-item" *ngIf="isLoggedIn && loggedInUser.roles[1] === role.Admin">
         <a class="nav-link" routerLink="/admin" routerLinkActive="Activate">admin</a>
       </li>
-      <li class="nav-item" *ngIf="isLoggedIn && loggedInUser.roles[2] !== (null || undefined)">
+      <li class="nav-item" *ngIf="isLoggedIn && loggedInUser.roles[2] === role.Boss">
         <a class="nav-link">boss</a>
       </li>
       <li class="nav-item">
         <app-theme-switcher></app-theme-switcher>
       </li>
     </ul>
-    <span *ngIf="isLoggedIn" class="pr-2 text-light"><i>Bejelentkezve: {{ loggedInUser.username }}</i></span>
+    <span *ngIf="isLoggedIn" class="pr-2 nav-item">
+      <p class="m-0 text-white">Bejelentkezve: {{ loggedInUser.username }}</p>
+    </span>
     <app-user-menu [isLoggedIn]="isLoggedIn" (logOutEvent)="logOutEventHandler()"></app-user-menu>
   </div>
 </nav>

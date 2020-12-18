@@ -20,7 +20,7 @@ export const Users: Array<User> = [
   {
     username: 'Balazs',
     password: 'passw123',
-    roles: [role.User, role.Admin]
+    roles: [role.User, role.Admin, role.Boss]
   },
   {
     username: 'Feri',
