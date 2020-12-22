@@ -9,7 +9,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TestComponenetComponent } from './test-componenet/test-componenet.component';
 import { MonthViewComponent } from './calendar/month-view/month-view.component';
 import { DatepickerInputComponent } from './datepicker-input/datepicker-input.component';
 import { SummaryCalendarComponent } from './summary-calendar/summary-calendar.component';
@@ -22,12 +21,12 @@ import { LoginComponent } from './login/login.component';
 import { UserComponent } from './user/user.component';
 import { AdminComponent } from './admin/admin.component';
 import { ThemeSwitcherComponent } from './navbar/theme-switcher/theme-switcher.component';
+import { DatePlanComponent } from './date-plan/date-plan.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CalendarComponent,
-    TestComponenetComponent,
     MonthViewComponent,
     DatepickerInputComponent,
     SummaryCalendarComponent,
@@ -38,6 +37,7 @@ import { ThemeSwitcherComponent } from './navbar/theme-switcher/theme-switcher.c
     UserComponent,
     AdminComponent,
     ThemeSwitcherComponent,
+    DatePlanComponent,
   ],
   imports: [
     BrowserModule,
