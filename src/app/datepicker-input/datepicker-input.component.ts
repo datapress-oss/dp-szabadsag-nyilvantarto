@@ -21,7 +21,7 @@ export class DatepickerInputComponent implements OnInit {
   // calendar properties
   bsConfig: Partial<BsDatepickerConfig>;
   bsValue = new Date();
-  bsDescription = '';
+  title = '';
   minDate: Date;
   maxDate: Date;
   // icons
@@ -36,19 +36,19 @@ export class DatepickerInputComponent implements OnInit {
     // construct new CustomeDay obj
     const newDate: CustomeDay = {
       date: moment(day, this.dateFormat),
-      description: this.bsDescription
+      title: this.title
     };
     // add newDate to days arr
     this.customeDays.push(newDate);
     // clear form values to default
     this.bsValue = new Date();
-    this.bsDescription = '';
+    this.title = '';
   }
 
   onNewDate(day: Date): void {
-    console.log(this.bsDescription);
+    console.log(this.title);
     // validate description (must not be empty)
-    if (!(this.bsDescription === '' || this.bsDescription === null)) {
+    if (!(this.title === '' || this.title === null)) {
       this.addNewDate(day);
     }
   }

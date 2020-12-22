@@ -10,11 +10,11 @@ export class AdminComponent implements OnInit {
   // mock data for datepickers
   freeDaysMock: Array<CustomeDay> = [{
     date: moment('2020-11-22'),
-    description: 'teszt szabadnap'
+    title: 'teszt szabadnap'
   }];
   workDaysMock: Array<CustomeDay> = [{
     date: moment('2020-11-21'),
-    description: 'teszt munkanap'
+    title: 'teszt munkanap'
   }];
 
   constructor() { }

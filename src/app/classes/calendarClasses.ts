@@ -16,7 +16,7 @@ export interface Day {
 
 export interface CustomeDay {
   date: moment.Moment;
-  description: string;
+  title: string;
 }
 
 export interface Week {

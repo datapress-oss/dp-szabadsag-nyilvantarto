@@ -5,7 +5,7 @@
         type="text"
         placeholder="Megnevezés"
         class="form-control bg-light"
-        [(ngModel)]="bsDescription"
+        [(ngModel)]="title"
       >
     </div>
     <div class="col-xl-1 col-lg-2 col-md-3 col-sm-3 col-4">
@@ -31,7 +31,7 @@
   <div class="row mb-2" *ngFor="let day of customeDays">
     <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6 p-0 border border-dark">
       <div class="output">
-        <p>{{ day.description }}</p>
+        <p>{{ day.title }}</p>
       </div>
     </div>
     <div class="col-xl-1 col-lg-2 col-md-3 col-sm-3 col-4 p-0 border border-dark">
