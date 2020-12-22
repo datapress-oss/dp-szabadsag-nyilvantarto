@@ -13,16 +13,19 @@
       </button>
     </div>
   </div>
-  <div class="row">
-    <div class="col">
       <div class="collapse multi-collapse" id="userSummary">
         <div class="card card-body shadow">
-          <p>Összes kivehető napok: 31</p>
-          <p>Eddig kivett napok: {{ currentUser.leaveDates.length }}</p>
-          <p>Maradék kivehető napok: {{ 31 - currentUser.leaveDates.length }}</p>
-        </div>
+          <div  class="row">
+            <div class="col"><p>Összes kivehető napok: 31</p></div>
+            <div class="col"><p>Eddig kivett napok: {{ currentUser.leaveDates.length }}</p></div>
+            <div class="col"><p>Maradék kivehető napok: {{ 31 - currentUser.leaveDates.length }}</p></div>
+         </div>
+            <div class="row">
+              <div class="col-2 d-flex justify-content-center border">
+                <p>2020.12.20 - 2020.12.25</p>
+              </div>
+          </div>
       </div>
-    </div>
   </div>
   <div class="row">
     <div
