@@ -28,11 +28,6 @@ export class NavbarComponent implements OnInit {
   constructor(private auth: AuthService) {}
 
   ngOnInit(): void {
-
-    // if (this.auth.isLoggedIn()) {
-    //   // set user if already logged in
-    //   this.setUser();
-    // }
     this.auth.userLogInEventListener().subscribe(userLogIn => {
       // skip userLogIn with value of null
       if (userLogIn !== null) {

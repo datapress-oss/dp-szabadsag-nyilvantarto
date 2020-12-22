@@ -12,13 +12,37 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/" routerLinkActive="Activate">Általános</a>
       </li>
-      <li class="nav-item" *ngIf="isLoggedIn && loggedInUser.roles[0] === role.User">
+      <li
+        class="nav-item"
+        *ngIf="isLoggedIn &&
+          (
+            loggedInUser.roles[0] === role.User ||
+            loggedInUser.roles[0] === role.Admin ||
+            loggedInUser.roles[0] === role.Boss
+          )
+        "
+      >
         <a class="nav-link" routerLink="/user" routerLinkActive="Activate">user</a>
       </li>
-      <li class="nav-item" *ngIf="isLoggedIn && loggedInUser.roles[1] === role.Admin">
+      <li
+        class="nav-item"
+        *ngIf="isLoggedIn &&
+          (
+            loggedInUser.roles[0] === role.Admin ||
+            loggedInUser.roles[0] === role.Boss
+          )
+        "
+      >
         <a class="nav-link" routerLink="/admin" routerLinkActive="Activate">admin</a>
       </li>
-      <li class="nav-item" *ngIf="isLoggedIn && loggedInUser.roles[2] === role.Boss">
+      <li
+        class="nav-item"
+        *ngIf="isLoggedIn &&
+          (
+            loggedInUser.roles[0] === role.Boss
+          )
+        "
+      >
         <a class="nav-link">boss</a>
       </li>
       <li class="nav-item">
