@@ -1,1 +1,18 @@
-<p>date-proposal works!</p>
+<div class="container">
+  <div class="row">
+    <div *ngIf="holiday.status === HolidayStatus.pending" class="col d-flex justify-content-center">
+      <p>Elfogadésra vár</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-8 col-lg-6 col-md-8 col-8">
+      <p>{{ holiday.from | date:dateFormat }} - {{ holiday.to | date:dateFormat }}</p>
+    </div>
+    <div class="col-2">
+      <button (click)="onAccept()" class="btn btn-success btn-sm">Y</button>
+    </div>
+    <div class="col-2">
+      <button (click)="onCancel()" class="btn btn-danger btn-sm">N</button>
+    </div>
+  </div>
+</div>

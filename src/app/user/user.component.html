@@ -16,13 +16,21 @@
       <div class="collapse multi-collapse" id="userSummary">
         <div class="card card-body shadow">
           <div  class="row">
-            <div class="col"><p>Összes kivehető napok: 31</p></div>
-            <div class="col"><p>Eddig kivett napok: {{ currentUser.leaveDates.length }}</p></div>
-            <div class="col"><p>Maradék kivehető napok: {{ 31 - currentUser.leaveDates.length }}</p></div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12"><p>Összes kivehető napok: 31</p></div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12"><p>Eddig kivett napok: {{ currentUser.leaveDates.length }}</p></div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12"><p>Maradék kivehető napok: {{ 31 - currentUser.leaveDates.length }}</p></div>
          </div>
             <div class="row">
-              <div class="col-2 d-flex justify-content-center border">
-                <p>2020.12.20 - 2020.12.25</p>
+              <div
+                class="col-xl-4 col-md-6 col-12 d-flex align-items-center border"
+                *ngFor="let holyday of mockHolidays"
+              >
+                <app-date-proposal
+                  [holiday]="holyday"
+                  (accept)="userAcceptEventHandler()"
+                  (cancel)="userCancelEventHandler()"
+                >
+                </app-date-proposal>
               </div>
           </div>
       </div>
