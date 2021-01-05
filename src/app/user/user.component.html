@@ -22,15 +22,15 @@
          </div>
             <div class="row">
               <div
-                class="col-xl-4 col-md-6 col-12 d-flex align-items-center border"
+                class="col-md d-flex align-items-center border grid"
                 *ngFor="let holyday of mockHolidays"
               >
-                <app-date-proposal
+                  <app-date-proposal
                   [holiday]="holyday"
                   (accept)="userAcceptEventHandler()"
                   (cancel)="userCancelEventHandler()"
-                >
-                </app-date-proposal>
+                  >
+                 </app-date-proposal>
               </div>
           </div>
       </div>
