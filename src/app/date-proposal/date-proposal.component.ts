@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Holiday, HolidayStatus } from './../classes/holiday';
+import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import * as moment from 'moment';
 
 @Component({
@@ -8,6 +9,8 @@ import * as moment from 'moment';
   styleUrls: ['./date-proposal.component.scss']
 })
 export class DateProposalComponent implements OnInit {
+  faCheck = faCheck;
+  faTimes = faTimes;
   moment = moment;
   dateFormat = 'y-MM-dd';
   HolidayStatus = HolidayStatus;

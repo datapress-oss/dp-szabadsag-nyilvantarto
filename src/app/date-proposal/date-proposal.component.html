@@ -1,25 +1,25 @@
 <div class="container">
-  <div *ngIf="holiday.status === HolidayStatus.pending" class="col d-flex justify-content-center">
-    <p>Elfogadésra vár</p>
-  </div>
-  </div>
   <div class="row">
-    <div class="col-xl-8 col-lg-6 col-md-8 col-8">
+    <div class="col">
       <div class="row">
-        <div class="col-md">
-          {{ holiday.from | date:dateFormat }} 
+        <div class="col-xl-6 col-lg-5 col-md-6 col">
+          {{ holiday.from | date:dateFormat }}
         </div>
-        <div class="col-md">
+        <div class="col-xl-6 col-lg-5 col-md-6 col">
           {{ holiday.to | date:dateFormat }}
         </div>
       </div>
     </div>
-    <div class="col-2 align-itme-center">
-      <button (click)="onAccept()" class="btn btn-success btn-sm">Y</button>
+    <div class="col-2">
+      <button (click)="onAccept()" class="btn btn-success btn-sm"><fa-icon [icon]="faCheck"></fa-icon></button>
     </div>
-    <div class="col-2 align-item-center">
-      <button (click)="onCancel()" class="btn btn-danger btn-sm">N</button>
+    <div class="col-2">
+      <button (click)="onCancel()" class="btn btn-danger btn-sm"><fa-icon [icon]="faTimes"></fa-icon></button>
     </div>
   </div>
   <div class="row">
+    <div *ngIf="holiday.status === HolidayStatus.pending" class="col d-flex justify-content-center">
+      <p class="m-0 text-danger italic">Elfogadásra vár</p>
+    </div>
+  </div>
 </div>
