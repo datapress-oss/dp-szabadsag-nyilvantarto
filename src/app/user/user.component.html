@@ -22,11 +22,10 @@
          </div>
             <div class="row">
               <div
-                class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 border dateProposalUserContainer pt-5"
+                class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12"
                 *ngFor="let holyday of mockHolidays"
               >
                   <app-date-proposal
-                  class="w-100"
                   [holiday]="holyday"
                   (accept)="userAcceptEventHandler()"
                   (cancel)="userCancelEventHandler()"
