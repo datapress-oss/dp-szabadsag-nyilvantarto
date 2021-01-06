@@ -8,7 +8,7 @@ import { LoggedInUser, role } from './../classes/user';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  isLoggedIn: boolean;
+  isLoggedIn = false;
   loggedInUser: LoggedInUser;
   role = role;
 
