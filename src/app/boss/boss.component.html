@@ -4,8 +4,8 @@
       <p>Név: xyz</p>
       <app-date-proposal
         [holiday]="holiday"
-        (accept)="bossAcceptEventHandler()"
-        (cancel)="bossCancelEventHandler()"
+        (accept)="bossAcceptEventHandler($event)"
+        (cancel)="bossCancelEventHandler($event)"
       >
       </app-date-proposal>
     </div>

@@ -8,11 +8,13 @@ import { mockHolidays, Holiday } from './../classes/holiday';
 export class BossComponent implements OnInit {
   mockHolidays = mockHolidays;
 
-  bossAcceptEventHandler(): void {
+  bossAcceptEventHandler(holydayOutput: Holiday): void {
     console.log('boss accept event');
+    console.log(holydayOutput);
   }
-  bossCancelEventHandler(): void {
+  bossCancelEventHandler(holydayOutput: Holiday): void {
     console.log('boss cancel event');
+    console.log(holydayOutput);
   }
 
   constructor() { }

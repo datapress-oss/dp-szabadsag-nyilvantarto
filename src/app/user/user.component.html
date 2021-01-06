@@ -27,8 +27,8 @@
               >
                   <app-date-proposal
                   [holiday]="holyday"
-                  (accept)="userAcceptEventHandler()"
-                  (cancel)="userCancelEventHandler()"
+                  (accept)="userAcceptEventHandler($event)"
+                  (cancel)="userCancelEventHandler($event)"
                   >
                  </app-date-proposal>
               </div>
