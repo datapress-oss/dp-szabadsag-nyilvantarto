@@ -22,6 +22,7 @@ import { UserComponent } from './user/user.component';
 import { AdminComponent } from './admin/admin.component';
 import { ThemeSwitcherComponent } from './navbar/theme-switcher/theme-switcher.component';
 import { DateProposalComponent } from './date-proposal/date-proposal.component';
+import { BossComponent } from './boss/boss.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { DateProposalComponent } from './date-proposal/date-proposal.component';
     AdminComponent,
     ThemeSwitcherComponent,
     DateProposalComponent,
+    BossComponent,
   ],
   imports: [
     BrowserModule,
