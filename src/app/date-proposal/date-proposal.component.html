@@ -1,4 +1,4 @@
-<div class="container border dateProposalContainer">
+<div class="container dateProposalContainer">
   <div class="row pt-3">
     <div class="col">
       <div class="row">
@@ -10,16 +10,23 @@
         </div>
       </div>
     </div>
-    <div class="col-2">
-      <button (click)="onAccept()" class="btn btn-success btn-sm"><fa-icon [icon]="faCheck"></fa-icon></button>
-    </div>
+    <ng-template [ngIf]="router.url === '/user'" [ngIfElse]="boss">
+      <ng-template [ngIf]="!(holiday.status === HolidayStatus.pending)" [ngIfElse]="pending">
+        <div class="col-2">
+          <button (click)="onAccept()" class="btn btn-success btn-sm"><fa-icon [icon]="faCheck"></fa-icon></button>
+        </div>
+      </ng-template>
+    </ng-template>
     <div class="col-2">
       <button (click)="onCancel()" class="btn btn-danger btn-sm"><fa-icon [icon]="faTimes"></fa-icon></button>
     </div>
   </div>
-  <div class="row">
-    <div *ngIf="holiday.status === HolidayStatus.pending" class="col d-flex justify-content-center">
-      <p class="m-0 text-danger italic">Elfogadásra vár</p>
-    </div>
-  </div>
 </div>
+<ng-template #pending>
+  <div class="col-lg-2 col">
+    <p class="m-0 text-danger italic">Elfogadásra vár</p>
+  </div>
+</ng-template>
+<ng-template #boss>
+  <button (click)="onAccept()" class="btn btn-success btn-sm"><fa-icon [icon]="faCheck"></fa-icon></button>
+</ng-template>

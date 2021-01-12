@@ -13,29 +13,26 @@
       </button>
     </div>
   </div>
-      <div class="collapse multi-collapse" id="userSummary">
-        <div class="card card-body shadow">
-          <div  class="row">
-            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12"><p>Összes kivehető napok: 31</p></div>
-            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12"><p>Eddig kivett napok: {{ currentUser.leaveDates.length }}</p></div>
-            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12"><p>Maradék kivehető napok: {{ 31 - currentUser.leaveDates.length }}</p></div>
-         </div>
-            <div class="row">
-              <div
-                class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12"
-                *ngFor="let holyday of mockHolidays"
-              >
-                  <app-date-proposal
-                  [holiday]="holyday"
-                  (accept)="userAcceptEventHandler($event)"
-                  (cancel)="userCancelEventHandler($event)"
-                  >
-                 </app-date-proposal>
-              </div>
+    <div class="collapse multi-collapse w-100" id="userSummary">
+      <div class="card card-body shadow">
+        <div  class="row">
+          <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12"><p>Összes kivehető napok: 31</p></div>
+          <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12"><p>Eddig kivett napok: {{ currentUser.leaveDates.length }}</p></div>
+          <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12"><p>Maradék kivehető napok: {{ 31 - currentUser.leaveDates.length }}</p></div>
+        </div>
+        <div class="row border" *ngFor="let holyday of mockHolidays">
+          <div class="col">
+            <app-date-proposal
+              [holiday]="holyday"
+              (accept)="userAcceptEventHandler($event)"
+              (cancel)="userCancelEventHandler($event)"
+            >
+            </app-date-proposal>
           </div>
+        </div>
       </div>
-  </div>
-  <div class="row">
+    </div>
+  <div class="row pt-3">
     <div
       class="col-xl-3 col-lg-4 col-md col-sm-6 col-xs-12 col-12 mb-5"
       *ngFor="let month of currentYearCalendar.months; index as i"

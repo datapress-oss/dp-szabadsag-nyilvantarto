@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Holiday, HolidayStatus } from './../classes/holiday';
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import * as moment from 'moment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-date-proposal',
@@ -9,6 +10,7 @@ import * as moment from 'moment';
   styleUrls: ['./date-proposal.component.scss']
 })
 export class DateProposalComponent implements OnInit {
+
   faCheck = faCheck;
   faTimes = faTimes;
   moment = moment;
@@ -26,7 +28,9 @@ export class DateProposalComponent implements OnInit {
     this.cancel.emit(this.holiday);
   }
 
-  constructor() { }
+  constructor(public router: Router) {
+    console.log(this.router.url);
+  }
 
   ngOnInit(): void {
   }
