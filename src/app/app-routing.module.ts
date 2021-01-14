@@ -7,6 +7,7 @@ import { UserGuardGuard } from './guards/user-guard.guard';
 import { AdminGuardGuard } from './guards/admin-guard.guard';
 import { BossGuardGuard } from './guards/boss-guard.guard';
 import { BossComponent } from './boss/boss.component';
+import {SummaryViewComponent} from './summary-view/summary-view.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
     path: 'boss',
     component: BossComponent,
     canActivate: [BossGuardGuard]
+  },
+  {
+    path: 'summary',
+    component: SummaryViewComponent
   }
 ];
 
