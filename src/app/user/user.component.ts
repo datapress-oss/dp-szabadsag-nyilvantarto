@@ -5,12 +5,15 @@ import { Year } from './../classes/calendarClasses';
 import { mockEmployees, Employee } from './../classes/summaryClasses';
 import { mockHolidays, Holiday } from './../classes/holiday';
 import { AuthService } from './../auth.service';
+import { faUndo, faSave } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
+  faUndo = faUndo;
+  faSave = faSave;
   mockHolidays = mockHolidays;
   currentYearCalendar: Year;
   currentUser: Employee;
