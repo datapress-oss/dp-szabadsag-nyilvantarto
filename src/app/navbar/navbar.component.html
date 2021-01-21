@@ -12,6 +12,9 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/" routerLinkActive="Activate">Általános</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/summary" routerLinkActive="Activate">Összegző naptár</a>
+      </li>
       <li
         class="nav-item"
         *ngIf="isLoggedIn &&
@@ -23,9 +26,6 @@
         "
       >
         <a class="nav-link" routerLink="/user" routerLinkActive="Activate">Felhasználó</a>
-      </li>
-      <li>
-        <a class="nav-link" routerLink="/summary" routerLinkActive="Activate">Összegző naptár</a>
       </li>
       <li
         class="nav-item"
