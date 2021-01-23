@@ -17,14 +17,14 @@
         <div class="tab-pane fade show active" id="newFreeDay" role="tabpanel" aria-labelledby="home-tab">
           <app-datepicker-input
             theme="theme-red"
-            [customeDays]="freeDaysMock"
+            [customeDays]="modifiedDay.freeDays"
           >
           </app-datepicker-input>
         </div>
         <div class="tab-pane fade" id="newWorkDay" role="tabpanel" aria-labelledby="profile-tab">
           <app-datepicker-input
             theme="theme-red"
-            [customeDays]="workDaysMock"
+            [customeDays]="modifiedDay.workDays"
           >
           </app-datepicker-input>
         </div>
