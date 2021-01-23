@@ -1,12 +1,12 @@
 import * as moment from 'moment';
-export interface customeDay {
+export interface CustomeDay {
     title: string;
-    date : moment.Moment;
+    date: moment.Moment;
 }
-export interface modifiedDay{
-    year: Number;
-    freeDays: Array<customeDay>;
-    workDays: Array<customeDay>;
+export interface ModifiedDay{
+    year: number;
+    freeDays: Array<CustomeDay>;
+    workDays: Array<CustomeDay>;
 }
 
 

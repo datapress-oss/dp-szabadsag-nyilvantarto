@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
 import { BsDatepickerConfig, BsLocaleService } from 'ngx-bootstrap/datepicker';
-import { CustomeDay } from './../classes/calendarClasses';
+import { CustomeDay } from './../classes/modifiedDay';
 import * as moment from 'moment';
 import { defineLocale } from 'ngx-bootstrap/chronos';
 import { huLocale } from 'ngx-bootstrap/locale';
