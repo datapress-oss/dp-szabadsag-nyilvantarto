@@ -18,6 +18,8 @@
           <app-datepicker-input
             theme="theme-red"
             [customeDays]="freeDays"
+            (addCustomeDayEvent)="addFreeDayEventHandler($event)"
+            (removeCustomeDayEvent)="removeFreeDayEventHandler($event)"
           >
           </app-datepicker-input>
         </div>
@@ -25,6 +27,8 @@
           <app-datepicker-input
             theme="theme-red"
             [customeDays]="workDays"
+            (addCustomeDayEvent)="addWorkDayEventHandler($event)"
+            (removeCustomeDayEvent)="removeWorkDayEventHandler($event)"
           >
           </app-datepicker-input>
         </div>

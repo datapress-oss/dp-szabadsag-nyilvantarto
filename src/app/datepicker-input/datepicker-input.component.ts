@@ -18,6 +18,9 @@ export class DatepickerInputComponent implements OnInit {
   @Input() theme: string;
   // array storing the custome days
   @Input() customeDays: Array<CustomeDay> = [];
+  // output events
+  @Output() addCustomeDayEvent: EventEmitter<CustomeDay> = new EventEmitter<CustomeDay>();
+  @Output() removeCustomeDayEvent: EventEmitter<CustomeDay> = new EventEmitter<CustomeDay>();
   // calendar properties
   bsConfig: Partial<BsDatepickerConfig>;
   bsValue = new Date();
@@ -32,32 +35,25 @@ export class DatepickerInputComponent implements OnInit {
     return date.format('YYYY.MM.DD');
   }
 
-  private addNewDate(day: Date): void {
-    // construct new CustomeDay obj
-    const newDate: CustomeDay = {
-      date: moment(day, this.dateFormat),
-      title: this.title
-    };
-    // add newDate to days arr
-    this.customeDays.push(newDate);
-    // clear form values to default
-    this.bsValue = new Date();
-    this.title = '';
-  }
-
   onNewDate(day: Date): void {
-    console.log(this.title);
     // validate description (must not be empty)
     if (!(this.title === '' || this.title === null)) {
-      this.addNewDate(day);
+      // construct new CustomeDay obj
+      const customeDay: CustomeDay = {
+        date: moment(day, this.dateFormat),
+        title: this.title
+      };
+      // emit 'customeDay'
+      this.addCustomeDayEvent.emit(customeDay);
+      // clear form values to default
+      this.bsValue = new Date();
+      this.title = '';
     }
   }
 
-  onRemoveDate(day: moment.Moment): void {
-    // remove the selected day
-    this.customeDays = this.customeDays.filter(customeDay => {
-      return customeDay.date.format(this.dateFormat) !== day.format(this.dateFormat);
-    });
+  onRemoveDate(customeDay: CustomeDay): void {
+    // emit the customeDay to be removed
+    this.removeCustomeDayEvent.emit(customeDay);
   }
 
   constructor(private localeService: BsLocaleService) {
