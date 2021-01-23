@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomeDay } from './../classes/calendarClasses';
+import { ModifiedDaysService } from './../modified-days.service';
 import * as moment from 'moment';
 
 @Component({
@@ -17,7 +18,7 @@ export class AdminComponent implements OnInit {
     title: 'teszt munkanap'
   }];
 
-  constructor() { }
+  constructor(public modifiedDaysService: ModifiedDaysService) { }
 
   ngOnInit(): void {
   }
