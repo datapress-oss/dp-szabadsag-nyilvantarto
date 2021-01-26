@@ -7,6 +7,7 @@ export interface ModifiedDay{
     year: number;
     freeDays: Array<CustomeDay>;
     workDays: Array<CustomeDay>;
+    timestamp: string;
 }
 
 

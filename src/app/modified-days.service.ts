@@ -40,7 +40,8 @@ export class ModifiedDaysService {
         title: ' December 24',
         date: moment('2020-12-12', 'YYYY-MM-DD')
       }
-    ]
+    ],
+    timestamp: '1611658840'
   };
 
   getFreeDays(): Array<CustomeDay> {
