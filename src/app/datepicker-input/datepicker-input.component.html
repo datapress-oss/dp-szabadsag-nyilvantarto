@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row mb-4">
-    <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
+    <div class="col">
       <input
         type="text"
         placeholder="Megnevezés"
@@ -8,7 +8,7 @@
         [(ngModel)]="title"
       >
     </div>
-    <div class="col-xl-1 col-lg-2 col-md-3 col-sm-3 col-4">
+    <div class="col">
       <input
       #dp="bsDatepicker"
       type="text"
@@ -29,12 +29,12 @@
     </div>
   </div>
   <div class="row mb-2" *ngFor="let day of customeDays; let i = index">
-    <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6 p-0 border border-dark">
+    <div class="col border border-dark">
       <div class="output">
         <p>{{ day.title }}</p>
       </div>
     </div>
-    <div class="col-xl-1 col-lg-2 col-md-3 col-sm-3 col-4 p-0 border border-dark">
+    <div class="col border border-dark">
       <div class="output">
         <p>{{ displayMomentDate(day.date) }}</p>
       </div>
