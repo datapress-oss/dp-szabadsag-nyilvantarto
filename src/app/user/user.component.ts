@@ -18,14 +18,22 @@ export class UserComponent implements OnInit {
   currentYearCalendar: Year;
   currentUser: Employee;
 
-  public userAcceptEventHandler(holydayOutput: Holiday): void {
+  public userHolidayAcceptEventHandler(holydayOutput: Holiday): void {
     console.log('user holiday accept event');
     console.log(holydayOutput);
   }
 
-  public userCancelEventHandler(holydayOutput: Holiday): void {
+  public userHolidayCancelEventHandler(holydayOutput: Holiday): void {
     console.log('user holiday cancel event');
     console.log(holydayOutput);
+  }
+
+  public userStateSaveEventHandler(): void {
+    console.log('user settings saved to db');
+  }
+
+  public userStateDiscardEventHandler(): void {
+    console.log('user settings loaded from db');
   }
 
   constructor(private dateManager: DateManagerService, private auth: AuthService) {

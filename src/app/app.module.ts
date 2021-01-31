@@ -24,6 +24,7 @@ import { ThemeSwitcherComponent } from './navbar/theme-switcher/theme-switcher.c
 import { DateProposalComponent } from './date-proposal/date-proposal.component';
 import { BossComponent } from './boss/boss.component';
 import { SummaryViewComponent } from './summary-view/summary-view.component';
+import { StateSaveComponent } from './state-save/state-save.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { SummaryViewComponent } from './summary-view/summary-view.component';
     DateProposalComponent,
     BossComponent,
     SummaryViewComponent,
+    StateSaveComponent,
   ],
   imports: [
     BrowserModule,

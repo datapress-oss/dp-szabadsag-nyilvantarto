@@ -42,6 +42,14 @@ export class AdminComponent implements OnInit {
     this.setCustomeDays();
   }
 
+  public adminStateSaveEventHandler(): void {
+    console.log('admin state saved to db');
+  }
+
+  public adminStateDiscardEventHandler(): void {
+    console.log('admin state loaded from db');
+  }
+
   constructor(public modifiedDaysService: ModifiedDaysService, private dateManager: DateManagerService) {
     this.currentYearCalendar = this.dateManager.createCalendar(moment().year());
   }

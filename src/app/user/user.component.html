@@ -13,14 +13,11 @@
       </button>
     </div>
     <div class="col-xl-2 col-4">
-      <div class="row">
-        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-4">
-          <button class="btn btn-success"><fa-icon [icon]="faSave"></fa-icon></button>
-        </div>
-        <div class="col">
-          <button class="btn btn-danger"><fa-icon [icon]="faUndo"></fa-icon></button>
-        </div>
-      </div>
+      <app-state-save
+        (saveEvent)="userStateSaveEventHandler()"
+        (discardEvent)="userStateDiscardEventHandler()"
+      >
+      </app-state-save>
     </div>
   </div>
     <div class="collapse multi-collapse w-100" id="userSummary">
@@ -34,8 +31,8 @@
           <div class="col-xl-5 col-lg-7 col">
             <app-date-proposal
               [holiday]="holyday"
-              (accept)="userAcceptEventHandler($event)"
-              (cancel)="userCancelEventHandler($event)"
+              (accept)="userHolidayAcceptEventHandler($event)"
+              (cancel)="userHolidayCancelEventHandler($event)"
             >
             </app-date-proposal>
           </div>

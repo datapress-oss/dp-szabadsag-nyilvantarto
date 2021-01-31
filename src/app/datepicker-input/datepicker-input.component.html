@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row mb-4">
-    <div class="col">
+    <div class="col-5">
       <input
         type="text"
         placeholder="Megnevezés"
@@ -8,7 +8,7 @@
         [(ngModel)]="title"
       >
     </div>
-    <div class="col">
+    <div class="col-5">
       <input
       #dp="bsDatepicker"
       type="text"
@@ -22,24 +22,24 @@
       [maxDate]="maxDate"
     >
     </div>
-    <div class="col-1">
+    <div class="col-xl-1 col-1">
       <button class="btn btn-success" (click)="onNewDate(bsValue)">
         <fa-icon [icon]="faPlus"></fa-icon>
       </button>
     </div>
   </div>
   <div class="row mb-2" *ngFor="let day of customeDays; let i = index">
-    <div class="col border border-dark">
+    <div class="col-5 border border">
       <div class="output">
         <p>{{ day.title }}</p>
       </div>
     </div>
-    <div class="col border border-dark">
+    <div class="col-5 border border">
       <div class="output">
         <p>{{ displayMomentDate(day.date) }}</p>
       </div>
     </div>
-    <div class="col-1 pt-2">
+    <div class="col-xl-1 col-1 pt-2">
       <button class="btn btn-danger" (click)="onRemoveDate(customeDays[i])">
         <fa-icon [icon]="faTrash"></fa-icon>
       </button>
