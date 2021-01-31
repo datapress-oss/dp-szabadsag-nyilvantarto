@@ -10,7 +10,6 @@ import * as animation from './../animations';
   animations: [
   animation.fadeAnimation,
   animation.fadeAnimation2
-
   ]
 
 })
@@ -19,6 +18,7 @@ export class CalendarComponent implements OnInit {
   @Input() currentMonth: number;
   @Input() freeDays: Array<CustomeDay> = [];
   @Input() workDays: Array<CustomeDay> = [];
+  @Input() outputOnly = false;
 
   constructor() {}
 

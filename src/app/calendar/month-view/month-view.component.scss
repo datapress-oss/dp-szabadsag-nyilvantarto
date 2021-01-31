@@ -57,3 +57,6 @@ table {
   color: lightgrey;
 }
 
+.btn.disabled, .btn:disabled {
+  opacity: 100%;
+}

@@ -16,6 +16,7 @@ export class MonthViewComponent implements OnInit {
   @Input() userSelectedDays: Array<object> = [];
   @Input() freeDays: Array<CustomeDay> = [];
   @Input() workDays: Array<CustomeDay> = [];
+  @Input() disabled = false;
   dateFormat = 'YYYY-MM-DD';
 
   includesFreeDay(day: Date): boolean {

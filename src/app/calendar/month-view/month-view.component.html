@@ -22,6 +22,7 @@
               [class.freeDay]="includesFreeDay(col.date) && !includesWorkDay(col)"
               [class.workDay]="includesWorkDay(col.date)"
               [class.btn-1-char]="is1CharLong(col.date)"
+              [disabled]="disabled"
               (click)="onDayClick(col);"
             >
               {{ col.date | date: 'd' }}
