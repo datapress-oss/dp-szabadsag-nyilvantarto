@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ModifiedDaysService } from './../modified-days.service';
 import { CustomeDay } from './../classes/modifiedDay';
 import { DateManagerService } from './../date-manager.service';
 import { Year } from './../classes/calendarClasses';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import * as moment from 'moment';
 
 @Component({
@@ -10,6 +11,7 @@ import * as moment from 'moment';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
+  modalRef: BsModalRef;
   currentYearCalendar: Year;
   freeDays: Array<CustomeDay>;
   workDays: Array<CustomeDay>;
@@ -50,7 +52,15 @@ export class AdminComponent implements OnInit {
     console.log('admin state loaded from db');
   }
 
-  constructor(public modifiedDaysService: ModifiedDaysService, private dateManager: DateManagerService) {
+  public openModal(template: TemplateRef<any>): void {
+    this.modalRef = this.modalService.show(template);
+  }
+
+  constructor(
+    public modifiedDaysService: ModifiedDaysService,
+    private dateManager: DateManagerService,
+    private modalService: BsModalService
+    ) {
     this.currentYearCalendar = this.dateManager.createCalendar(moment().year());
   }
 

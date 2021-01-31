@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row mb-4">
     <div class="col">
-      <button class="btn btn-info">Összegző nézet</button>
+      <button type="button" class="btn btn-info" (click)="openModal(calendarPreview)">Összegző nézet</button>
     </div>
     <div class="col-xl-2 col-4">
       <app-state-save
@@ -14,38 +14,52 @@
   <div class="row">
     <div class="col-xl col-sm-12">
       <h4>Új szabadnap kiválasztás</h4>
-          <app-datepicker-input
-            theme="theme-red"
-            [customeDays]="freeDays"
-            (addCustomeDayEvent)="addFreeDayEventHandler($event)"
-            (removeCustomeDayEvent)="removeFreeDayEventHandler($event)"
-          >
-          </app-datepicker-input>
+      <app-datepicker-input
+        theme="theme-red"
+        [customeDays]="freeDays"
+        (addCustomeDayEvent)="addFreeDayEventHandler($event)"
+        (removeCustomeDayEvent)="removeFreeDayEventHandler($event)"
+      >
+      </app-datepicker-input>
     </div>
-      <div class="col-xl col-sm-12">
-        <h4>Új munkanap kiválasztás</h4>
-          <app-datepicker-input
-            theme="theme-red"
-            [customeDays]="workDays"
-            (addCustomeDayEvent)="addWorkDayEventHandler($event)"
-            (removeCustomeDayEvent)="removeWorkDayEventHandler($event)"
-          >
-          </app-datepicker-input>
+    <div class="col-xl col-sm-12">
+      <h4>Új munkanap kiválasztás</h4>
+      <app-datepicker-input
+        theme="theme-red"
+        [customeDays]="workDays"
+        (addCustomeDayEvent)="addWorkDayEventHandler($event)"
+        (removeCustomeDayEvent)="removeWorkDayEventHandler($event)"
+      >
+      </app-datepicker-input>
+    </div>
   </div>
 </div>
-  <div class="row pt-3">
-    <div
-      class="col-xl-3 col-lg-4 col-md col-sm-6 col-xs-12 col-12 mb-5"
-      *ngFor="let month of currentYearCalendar.months; index as i"
-    >
-      <app-calendar
-        [currentMonth]="i+1"
-        [calendarYear]="currentYearCalendar"
-        [freeDays]="freeDays"
-        [workDays]="workDays"
-        [outputOnly]="true"
-      >
-      </app-calendar>
+
+<ng-template #calendarPreview>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Előnézet</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="container-fluid">
+      <div class="row pt-3">
+        <div
+          class="col-xl-3 col-lg-4 col-md col-sm-6 col-xs-12 col-12 mb-5"
+          *ngFor="let month of currentYearCalendar.months; index as i"
+        >
+          <app-calendar
+            [currentMonth]="i+1"
+            [calendarYear]="currentYearCalendar"
+            [freeDays]="freeDays"
+            [workDays]="workDays"
+            [outputOnly]="true"
+          >
+          </app-calendar>
+        </div>
+      </div>
     </div>
   </div>
+</ng-template>
 
