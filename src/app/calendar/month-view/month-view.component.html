@@ -18,7 +18,9 @@
             <button
               class="btn btn-sm"
               *ngIf="col"
-              [class.selectedDay]="selectedDays.includes(col)"
+              [class.userSelectedDay]="userSelectedDays.includes(col)"
+              [class.freeDay]="includesFreeDay(col.date) && !includesWorkDay(col)"
+              [class.workDay]="includesWorkDay(col.date)"
               [class.btn-1-char]="is1CharLong(col.date)"
               (click)="onDayClick(col);"
             >

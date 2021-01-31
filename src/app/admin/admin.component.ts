@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { ModifiedDaysService } from './../modified-days.service';
+import { CustomeDay } from './../classes/modifiedDay';
+import { DateManagerService } from './../date-manager.service';
+import { Year } from './../classes/calendarClasses';
 import * as moment from 'moment';
-import { ModifiedDay, CustomeDay } from './../classes/modifiedDay';
 
 @Component({
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
+  currentYearCalendar: Year;
   freeDays: Array<CustomeDay>;
   workDays: Array<CustomeDay>;
 
@@ -18,12 +21,15 @@ export class AdminComponent implements OnInit {
 
   public addFreeDayEventHandler(freeDay: CustomeDay): void {
     this.modifiedDaysService.addFreeDay(freeDay);
-    this.setCustomeDays();
+    // refresh local array for Input() in calendar preview
+    this.freeDays = [...this.modifiedDaysService.getFreeDays()];
+
   }
 
   public addWorkDayEventHandler(workDay: CustomeDay): void {
     this.modifiedDaysService.addWorkDay(workDay);
-    this.setCustomeDays();
+    // refresh local array for Input() in calendar preview
+    this.workDays = [...this.modifiedDaysService.getWorkDays()];
   }
 
   public removeFreeDayEventHandler(freeDay: CustomeDay): void {
@@ -36,7 +42,9 @@ export class AdminComponent implements OnInit {
     this.setCustomeDays();
   }
 
-  constructor(public modifiedDaysService: ModifiedDaysService) { }
+  constructor(public modifiedDaysService: ModifiedDaysService, private dateManager: DateManagerService) {
+    this.currentYearCalendar = this.dateManager.createCalendar(moment().year());
+  }
 
   ngOnInit(): void {
     this.setCustomeDays();

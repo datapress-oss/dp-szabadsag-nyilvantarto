@@ -35,4 +35,18 @@
       </div>
     </div>
   </div>
+  <div class="row pt-3">
+    <div
+      class="col-xl-3 col-lg-4 col-md col-sm-6 col-xs-12 col-12 mb-5"
+      *ngFor="let month of currentYearCalendar.months; index as i"
+    >
+      <app-calendar
+        [currentMonth]="i+1"
+        [calendarYear]="currentYearCalendar"
+        [freeDays]="freeDays"
+        [workDays]="workDays"
+      >
+      </app-calendar>
+    </div>
+  </div>
 </div>

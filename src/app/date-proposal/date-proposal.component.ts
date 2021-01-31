@@ -28,9 +28,7 @@ export class DateProposalComponent implements OnInit {
     this.cancel.emit(this.holiday);
   }
 
-  constructor(public router: Router) {
-    console.log(this.router.url);
-  }
+  constructor(public router: Router) {}
 
   ngOnInit(): void {
   }

@@ -3,7 +3,7 @@
   width: 300px;
 }
 
-.selectedDay {
+.userSelectedDay {
   background-color:var(--red);
   color: var(--light);
 }
@@ -27,7 +27,6 @@ th, td {
 // tablet
 @media only screen and (min-width: 458px) {
   th, td {
-    //padding: .5rem;
     font-size: large;
   }
 }
@@ -42,6 +41,16 @@ th, td {
 
 table {
   width: inherit;
+}
+
+.freeDay {
+  color: var(--light);
+  background-color: var(--green);
+}
+
+.workDay {
+  color: var(--light);
+  background-color: var(--gray-dark);
 }
 
 .weekdays {

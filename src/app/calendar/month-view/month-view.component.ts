@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
 import * as moment from 'moment';
+import { CustomeDay } from './../../classes/modifiedDay';
 
 @Component({
   selector: 'app-month-view',
@@ -10,27 +11,48 @@ import * as moment from 'moment';
 export class MonthViewComponent implements OnInit {
   @Input() rows: [][];
   @Input() monthTitle: string;
-  @Output() selectNewMonth = new EventEmitter<string>();
   @Output() selectNewDay = new EventEmitter<Array<object>>();
   weekdays: Array<string> = moment.weekdaysMin(true);
-  selectedDays: Array<object>;
+  @Input() userSelectedDays: Array<object> = [];
+  @Input() freeDays: Array<CustomeDay> = [];
+  @Input() workDays: Array<CustomeDay> = [];
+  dateFormat = 'YYYY-MM-DD';
 
-  // emits the current month to calendar.component
-  onMonthClick(month: string): void {
-    this.selectNewMonth.emit(month);
+  includesFreeDay(day: Date): boolean {
+    let isFound = false;
+    const formattedDay = moment(day).format(this.dateFormat);
+    this.freeDays.forEach(freeDay => {
+      const freeDayDate = freeDay.date.format(this.dateFormat);
+      if (freeDayDate === formattedDay) {
+        isFound = true;
+      }
+    });
+    return isFound;
+  }
+
+  includesWorkDay(day: Date): boolean {
+    let isFound = false;
+    const formattedDay = moment(day).format(this.dateFormat);
+    this.workDays.forEach(workDay => {
+      const workDayDate = workDay.date.format(this.dateFormat);
+      if (workDayDate === formattedDay) {
+        isFound = true;
+      }
+    });
+    return isFound;
   }
 
   // emits the selected day to calendar.component
   onDayClick(day: object): void {
-    if (this.selectedDays.includes(day)) {
+    if (this.userSelectedDays.includes(day)) {
       // remove the selected day if it was clicked a 2nd time
-      delete this.selectedDays[this.selectedDays.indexOf(day)];
+      delete this.userSelectedDays[this.userSelectedDays.indexOf(day)];
     }
     else {
       // add the selected day if it was clicked the 1st time
-      this.selectedDays.push(day);
+      this.userSelectedDays.push(day);
     }
-    this.selectNewDay.emit(this.selectedDays);
+    this.selectNewDay.emit(this.userSelectedDays);
   }
 
   // checks wether a day is 1 digit or 2, for styling
@@ -46,10 +68,7 @@ export class MonthViewComponent implements OnInit {
     }
   }
 
-  constructor() {
-    // array must have a default value befure used in a method
-    this.selectedDays = [];
-  }
+  constructor() {}
 
   ngOnInit(): void {
   }

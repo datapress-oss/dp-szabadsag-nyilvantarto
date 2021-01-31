@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { Year } from './../classes/calendarClasses';
+import { CustomeDay } from './../classes/modifiedDay';
 import * as animation from './../animations';
 
 @Component({
@@ -16,6 +17,8 @@ import * as animation from './../animations';
 export class CalendarComponent implements OnInit {
   @Input() calendarYear: Year;
   @Input() currentMonth: number;
+  @Input() freeDays: Array<CustomeDay> = [];
+  @Input() workDays: Array<CustomeDay> = [];
 
   constructor() {}
 
