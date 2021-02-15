@@ -1,3 +1,5 @@
+import * as moment from 'moment';
+
 export enum DayStatus {
   NonWorking,
   Work,

@@ -38,6 +38,7 @@ export class UserComponent implements OnInit {
 
   constructor(private dateManager: DateManagerService, private auth: AuthService) {
     this.currentYearCalendar = this.dateManager.createCalendar(moment().year());
+    console.log(this.currentYearCalendar);
   }
 
   ngOnInit(): void {

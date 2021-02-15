@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import * as moment from 'moment';
-import * as Calendar from './classes/calendarClasses'
+import * as Calendar from './classes/calendarClasses';
+import { ModifiedDaysService } from './modified-days.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -82,22 +84,31 @@ export class DateManagerService {
     withHoliday: boolean
   ): Calendar.Day {
 
+    // decide dayStatus based on wether it's a weekday or not
     let dayStatus: Calendar.DayStatus = [5, 6].includes(date.weekday())
       ? Calendar.DayStatus.NonWorking
       : Calendar.DayStatus.Work;
 
-    if (this.isFreeday(date)) {
-      dayStatus = Calendar.DayStatus.NonWorking;
-    }
-    if (this.isWorkday(date)) {
-      dayStatus = Calendar.DayStatus.Work;
-    }
+    // decide dayStatus based on freeDays and workDays from DB
+    const freeDays = this.modifiedDaysService.getFreeDays();
+    const workDays = this.modifiedDaysService.getWorkDays();
+    freeDays.forEach(freeDay => {
+      if (freeDay.date.format('YYYY-MM-DD') === date.format('YYYY-MM-DD')) {
+        dayStatus = Calendar.DayStatus.NonWorking;
+      }
+    });
+    workDays.forEach(workDay => {
+      if (workDay.date.format('YYYY-MM-DD') === date.format('YYYY-MM-DD')) {
+        dayStatus = Calendar.DayStatus.Work;
+      }
+    });
 
-    // if (withHoliday && this.isOwnHoliday(date)) {
-    //   dayStatus = Calendar.DayStatus.Leave;
-    // }
+    const day: Calendar.Day = {
+      date,
+      status: dayStatus
+    };
 
-    return { date, status: dayStatus };
+    return day;
   }
 
   private getNumberOfMonthWeeks(date: moment.Moment): number {
@@ -122,7 +133,7 @@ export class DateManagerService {
   //   return this.actualUser.vacations.findIndex((h) => h.isSame(date)) >= 0;
   // }
 
-  constructor() {
+  constructor(private modifiedDaysService: ModifiedDaysService) {
     moment.locale('hu');
   }
 }
