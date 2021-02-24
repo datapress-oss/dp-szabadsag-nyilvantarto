@@ -7,3 +7,18 @@ html, body {
 .modal-dialog {
   max-width: 95% !important;
 }
+
+.NonWorking {
+  color: var(--light);
+  background-color: var(--green);
+}
+
+.Work {
+  color: var(--light);
+  background-color: var(--gray);
+}
+
+.leaveDay {
+  background-color: var(--red);
+  border: 1 1 black;
+}

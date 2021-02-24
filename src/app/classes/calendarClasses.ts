@@ -12,8 +12,8 @@ export interface MarkedDay {
 }
 
 export interface Day {
-  status: DayStatus;
   date: moment.Moment;
+  status: DayStatus;
 }
 
 export interface CustomeDay {
@@ -21,8 +21,7 @@ export interface CustomeDay {
   title: string;
 }
 
-export interface Week {
-}
+export interface Week {}
 
 export interface Month {
   title: string;

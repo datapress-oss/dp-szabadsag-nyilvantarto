@@ -2,8 +2,6 @@
     <app-month-view
       [monthTitle]="calendarYear.months[currentMonth-1].title"
       [rows]="calendarYear.months[currentMonth-1].weeks"
-      [freeDays]="freeDays"
-      [workDays]="workDays"
       (selectNewDay)="selectNewDayEventHandler($event)"
       [disabled]="outputOnly"
     >

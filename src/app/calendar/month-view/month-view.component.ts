@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
 import * as moment from 'moment';
-import { CustomeDay } from './../../classes/modifiedDay';
+import { DayStatus } from './../../classes/calendarClasses';
 
 @Component({
   selector: 'app-month-view',
@@ -14,34 +14,9 @@ export class MonthViewComponent implements OnInit {
   @Output() selectNewDay = new EventEmitter<Array<object>>();
   weekdays: Array<string> = moment.weekdaysMin(true);
   @Input() userSelectedDays: Array<object> = [];
-  @Input() freeDays: Array<CustomeDay> = [];
-  @Input() workDays: Array<CustomeDay> = [];
   @Input() disabled = false;
   dateFormat = 'YYYY-MM-DD';
-
-  includesFreeDay(day: Date): boolean {
-    let isFound = false;
-    const formattedDay = moment(day).format(this.dateFormat);
-    this.freeDays.forEach(freeDay => {
-      const freeDayDate = freeDay.date.format(this.dateFormat);
-      if (freeDayDate === formattedDay) {
-        isFound = true;
-      }
-    });
-    return isFound;
-  }
-
-  includesWorkDay(day: Date): boolean {
-    let isFound = false;
-    const formattedDay = moment(day).format(this.dateFormat);
-    this.workDays.forEach(workDay => {
-      const workDayDate = workDay.date.format(this.dateFormat);
-      if (workDayDate === formattedDay) {
-        isFound = true;
-      }
-    });
-    return isFound;
-  }
+  dayStatus = DayStatus;
 
   // emits the selected day to calendar.component
   onDayClick(day: object): void {
