@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Employee, mockEmployees, nonWorkDays, extraWorkDays } from './../../classes/summaryClasses';
+import { DateManagerService } from './../../date-manager.service';
+import { Year, Week, Day } from './../../classes/calendarClasses';
 import * as moment from 'moment';
 
 @Component({
@@ -11,6 +13,20 @@ export class MonthSummaryComponent implements OnInit {
   @Input() year: number;
   @Input() selectedMonth: number;
   @Input() employees: Array<Employee>;
+  currentYearCalendar: Year;
+
+  // combine the arrays inside 'weeks' array into one array
+  combineWeeksToDays(weeks: any): Array<Day> {
+    const days: Array<Day> = [];
+    weeks.forEach((week: any) => {
+      week.forEach((day: Day) => {
+        if (day !== undefined) {
+          days.push(day);
+        }
+      });
+    });
+    return days;
+  }
 
   // get length of employee name
   getEmployeeNameLength(name: string): number {
@@ -32,63 +48,9 @@ export class MonthSummaryComponent implements OnInit {
     return name;
   }
 
-  // check if current day is a leave day or not
-  isLeaveDay(day: number, employee: number): boolean {
-    const rawDate = new Date(`${this.year}-${this.selectedMonth + 1}-${day}`);
-    const momentDate = moment(rawDate);
-
-    for (const leaveDate of mockEmployees[employee].leaveDates) {
-      const isLeaveDay = momentDate.format('YYYY-MM-DD') === leaveDate.format('YYYY-MM-DD');
-      if (isLeaveDay) {
-        return true;
-      }
-    }
-    return false;
+  constructor(private dateManager: DateManagerService) {
+    this.currentYearCalendar = this.dateManager.createCalendar(moment().year());
   }
-
-  // check if current day is a nonWork day or not
-  isNonWorkDay(day: number): boolean {
-    const rawDate = new Date(`${this.year}-${this.selectedMonth + 1}-${day}`);
-    const momentDate = moment(rawDate);
-
-    for (const nonWorkDay of nonWorkDays) {
-      const isNonWorkDay = momentDate.format('YYYY-MM-DD') === nonWorkDay.format('YYYY-MM-DD');
-      if (isNonWorkDay) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  // check if current day is weekend or not
-  isWeekend(day: number): boolean {
-    const rawDate = new Date(`${this.year}-${this.selectedMonth + 1}-${day}`);
-    const momentDate = moment(rawDate);
-
-    if (momentDate.weekday() === 5 || momentDate.weekday() === 6) {
-      // return true if day is Saturday or Sunday (0-6 scale)
-      return true;
-    }
-    else {
-      return false;
-    }
-  }
-
-  // check if current day is an extra work day or not
-  isExtraWorkDay(day: number): boolean {
-    const rawDate = new Date(`${this.year}-${this.selectedMonth + 1}-${day}`);
-    const momentDate = moment(rawDate);
-
-    for (const extraWorkDay of extraWorkDays) {
-      const isextraWorkDay = momentDate.format('YYYY-MM-DD') === extraWorkDay.format('YYYY-MM-DD');
-      if (isextraWorkDay) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  constructor() {}
 
   ngOnInit(): void {
   }

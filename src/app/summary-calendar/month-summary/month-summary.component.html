@@ -30,10 +30,10 @@
           </td>
         </ng-template>
         <td
-          *ngFor="let day of daysInMonth(); let currentDayIndex = index;"
-          [class.NonWorking]="(isNonWorkDay(currentDayIndex+1) || isWeekend(currentDayIndex+1)) && !(isExtraWorkDay(currentDayIndex+1))"
-          [class.Work]="(isExtraWorkDay(currentDayIndex+1) && !(isLeaveDay(currentDayIndex+1, currentEmployeeIndex)))"
-          [class.leaveDay]="(isLeaveDay(currentDayIndex+1, currentEmployeeIndex) && !(isNonWorkDay(currentDayIndex+1)))"
+          *ngFor="let day of combineWeeksToDays(currentYearCalendar.months[selectedMonth].weeks); let currentDayIndex = index;"
+          [class.NonWorking]="day.status === 0"
+          [class.Work]="day.status === 1"
+          [class.leaveDay]="day.status === 3"
         >
         </td>
       </tr>
