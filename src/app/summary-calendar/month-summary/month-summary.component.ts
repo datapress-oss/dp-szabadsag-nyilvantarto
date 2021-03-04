@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Employee, mockEmployees, nonWorkDays, extraWorkDays } from './../../classes/summaryClasses';
+import { Employee, mockEmployees } from './../../classes/summaryClasses';
 import { DateManagerService } from './../../date-manager.service';
-import { Year, Week, Day } from './../../classes/calendarClasses';
+import { Year, Day } from './../../classes/calendarClasses';
 import * as moment from 'moment';
 
 @Component({

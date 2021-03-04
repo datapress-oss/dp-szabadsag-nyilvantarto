@@ -9,7 +9,6 @@ import { ModifiedDaysService } from './modified-days.service';
 })
 export class DateManagerService {
   private freeDays: Calendar.MarkedDay[] = [];
-
   private workDays: Calendar.MarkedDay[] = [];
 
   public createCalendar(
