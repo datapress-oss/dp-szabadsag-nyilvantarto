@@ -1,7 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Year } from './../classes/calendarClasses';
 import * as animation from './../animations';
-import { DayStatus } from './../classes/calendarClasses';
 
 @Component({
   selector: 'app-calendar',
