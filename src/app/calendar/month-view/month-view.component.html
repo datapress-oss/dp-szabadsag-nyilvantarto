@@ -21,6 +21,7 @@
               [class.userSelectedDay]="userSelectedDays.includes(col)"
               [class.NonWorking]="col.status === 0"
               [class.Work]="col.status === 1"
+              [class.Leave]="col.status === 2"
               [class.btn-1-char]="is1CharLong(col.date)"
               [disabled]="disabled"
               (click)="onDayClick(col);"

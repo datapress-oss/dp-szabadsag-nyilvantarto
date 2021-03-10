@@ -11,6 +11,7 @@ import { Holiday, mockHolidays } from './classes/holiday';
 export class DateManagerService {
   private freeDays: Calendar.MarkedDay[] = [];
   private workDays: Calendar.MarkedDay[] = [];
+  private dateFormat = 'YYYY-MM-DD';
 
   public createCalendar(
     requestedYear: number, // = moment().year(),
@@ -78,8 +79,15 @@ export class DateManagerService {
     return weeks;
   }
 
-  // TODO: date utility functions (used in 'generateBaseNonWorkingDay()' below)
-
+  // date utility functions (used in 'generateBaseNonWorkingDay()' below)
+  private getDaysArray(start: Date, end: Date): Array<moment.Moment> {
+    const dates = [];
+    for (const arr = [], dt = new Date(start); dt <= end; dt.setDate(dt.getDate() + 1)) {
+      arr.push(new Date(dt));
+      dates.push(moment(dt, this.dateFormat));
+    }
+    return dates;
+}
 
   private generateBaseNonWorkingDay(
     date: moment.Moment,
@@ -97,24 +105,24 @@ export class DateManagerService {
     const leaveDays = mockHolidays;
     freeDays.forEach(freeDay => {
       // set dayStatus to 'NonWorking' if there's a match
-      if (freeDay.date.format('YYYY-MM-DD') === date.format('YYYY-MM-DD')) {
+      if (freeDay.date.format(this.dateFormat) === date.format(this.dateFormat)) {
         dayStatus = Calendar.DayStatus.NonWorking;
       }
     });
     workDays.forEach(workDay => {
       // set dayStatus to 'Work' if there's a match
-      if (workDay.date.format('YYYY-MM-DD') === date.format('YYYY-MM-DD')) {
+      if (workDay.date.format(this.dateFormat) === date.format(this.dateFormat)) {
         dayStatus = Calendar.DayStatus.Work;
       }
     });
     leaveDays.forEach(leaveDay => {
-      // TODO: calculate dates between 'from' and 'to'
-      const leaveDaysByDate: Array<moment.Moment> = [];
-
+      // calculate dates between 'from' and 'to'
+      const leaveDaysByDate =
+      this.getDaysArray(new Date(leaveDay.from.format(this.dateFormat)), new Date(leaveDay.to.format(this.dateFormat)));
 
       // set dayStatus to 'Leave' if there's a match
       leaveDaysByDate.forEach(leaveDayBydate => {
-        if (leaveDayBydate.format('YYYY-MM-DD') === date.format('YYYY-MM-DD')) {
+        if (leaveDayBydate.format(this.dateFormat) === date.format(this.dateFormat)) {
           dayStatus = Calendar.DayStatus.Leave;
         }
       });

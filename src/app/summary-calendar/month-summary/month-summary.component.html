@@ -32,8 +32,7 @@
         <td
           *ngFor="let day of combineWeeksToDays(currentYearCalendar.months[selectedMonth].weeks); let currentDayIndex = index;"
           [class.NonWorking]="day.status === 0"
-          [class.Work]="day.status === 1"
-          [class.leaveDay]="day.status === 3"
+          [class.Work]="day.status === 1 || day.status === 2"
         >
         </td>
       </tr>
