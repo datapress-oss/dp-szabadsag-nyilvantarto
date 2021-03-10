@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import * as moment from 'moment';
 import * as Calendar from './classes/calendarClasses';
 import { ModifiedDaysService } from './modified-days.service';
+import { Holiday, mockHolidays } from './classes/holiday';
 
 
 @Injectable({
@@ -39,7 +40,6 @@ export class DateManagerService {
     date: moment.Moment,
     withHoliday: boolean = false
   ): Calendar.Month {
-    //console.log('datttte', date);
     const monthCalendar: Calendar.Month = {
       title: date.format('MMMM'),
       weeks: this.generateWeeksOfMonth(date, withHoliday),
@@ -78,6 +78,9 @@ export class DateManagerService {
     return weeks;
   }
 
+  // TODO: date utility functions (used in 'generateBaseNonWorkingDay()' below)
+
+
   private generateBaseNonWorkingDay(
     date: moment.Moment,
     withHoliday: boolean
@@ -91,15 +94,30 @@ export class DateManagerService {
     // decide dayStatus based on freeDays and workDays from DB
     const freeDays = this.modifiedDaysService.getFreeDays();
     const workDays = this.modifiedDaysService.getWorkDays();
+    const leaveDays = mockHolidays;
     freeDays.forEach(freeDay => {
+      // set dayStatus to 'NonWorking' if there's a match
       if (freeDay.date.format('YYYY-MM-DD') === date.format('YYYY-MM-DD')) {
         dayStatus = Calendar.DayStatus.NonWorking;
       }
     });
     workDays.forEach(workDay => {
+      // set dayStatus to 'Work' if there's a match
       if (workDay.date.format('YYYY-MM-DD') === date.format('YYYY-MM-DD')) {
         dayStatus = Calendar.DayStatus.Work;
       }
+    });
+    leaveDays.forEach(leaveDay => {
+      // TODO: calculate dates between 'from' and 'to'
+      const leaveDaysByDate: Array<moment.Moment> = [];
+
+
+      // set dayStatus to 'Leave' if there's a match
+      leaveDaysByDate.forEach(leaveDayBydate => {
+        if (leaveDayBydate.format('YYYY-MM-DD') === date.format('YYYY-MM-DD')) {
+          dayStatus = Calendar.DayStatus.Leave;
+        }
+      });
     });
 
     const day: Calendar.Day = {
