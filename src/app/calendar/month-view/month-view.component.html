@@ -23,7 +23,7 @@
               [class.Work]="col.status === 1"
               [class.Leave]="col.status === 2"
               [class.btn-1-char]="is1CharLong(col.date)"
-              [disabled]="disabled"
+              [disabled]="disabled || col.status === 2"
               (click)="onDayClick(col);"
             >
               {{ col.date | date: 'd' }}
