@@ -1,5 +1,11 @@
+export enum HolidayStatus {
+  selected,
+  pending,
+  accepted
+}
+
 interface Holiday {
-  status: string;
+  status: HolidayStatus;
   groupId: number;
   from: string;
   to: string;
@@ -8,5 +14,5 @@ interface Holiday {
 
 export interface AggregatedLeave {
   name: string;
-  holiday: Array<Holiday>;
+  holidays: Array<Holiday>;
 }

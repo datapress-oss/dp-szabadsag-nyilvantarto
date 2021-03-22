@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import * as moment from 'moment';
+import * as Moment from 'moment';
+import { DateRange, extendMoment } from 'moment-range';
+const moment = extendMoment(Moment);
 import * as Calendar from './classes/calendarClasses';
 import { ModifiedDaysService } from './modified-days.service';
-import { Holiday, mockHolidays } from './classes/holiday';
+import { AggregatedLeavesService } from './aggregated-leaves.service';
 
 
 @Injectable({
@@ -11,6 +13,7 @@ import { Holiday, mockHolidays } from './classes/holiday';
 export class DateManagerService {
   private freeDays: Calendar.MarkedDay[] = [];
   private workDays: Calendar.MarkedDay[] = [];
+  private leaveDatesRanges: Array<DateRange> = [];
   private dateFormat = 'YYYY-MM-DD';
 
   public createCalendar(
@@ -100,32 +103,25 @@ export class DateManagerService {
       : Calendar.DayStatus.Work;
 
     // decide dayStatus based on freeDays and workDays from DB
-    const freeDays = this.modifiedDaysService.getFreeDays();
-    const workDays = this.modifiedDaysService.getWorkDays();
-    const leaveDays = mockHolidays;
-    freeDays.forEach(freeDay => {
+    this.freeDays.forEach(freeDay => {
       // set dayStatus to 'NonWorking' if there's a match
       if (freeDay.date.format(this.dateFormat) === date.format(this.dateFormat)) {
         dayStatus = Calendar.DayStatus.NonWorking;
       }
     });
-    workDays.forEach(workDay => {
+    this.workDays.forEach(workDay => {
       // set dayStatus to 'Work' if there's a match
       if (workDay.date.format(this.dateFormat) === date.format(this.dateFormat)) {
         dayStatus = Calendar.DayStatus.Work;
       }
     });
-    leaveDays.forEach(leaveDay => {
-      // calculate dates between 'from' and 'to'
-      const leaveDaysByDate =
-      this.getDaysArray(new Date(leaveDay.from.format(this.dateFormat)), new Date(leaveDay.to.format(this.dateFormat)));
 
-      // set dayStatus to 'Leave' if there's a match
-      leaveDaysByDate.forEach(leaveDayBydate => {
-        if (leaveDayBydate.format(this.dateFormat) === date.format(this.dateFormat)) {
-          dayStatus = Calendar.DayStatus.Leave;
-        }
-      });
+    // set dayStatus to 'Leave' if there's a match
+    this.leaveDatesRanges.forEach(leaveDatesRange => {
+      if (leaveDatesRange.contains(date)) {
+        console.log(`date: ${date.format(this.dateFormat)}, contains: ${leaveDatesRange.contains(date)}`);
+        dayStatus = Calendar.DayStatus.Leave;
+      }
     });
 
     const day: Calendar.Day = {
@@ -158,7 +154,10 @@ export class DateManagerService {
   //   return this.actualUser.vacations.findIndex((h) => h.isSame(date)) >= 0;
   // }
 
-  constructor(private modifiedDaysService: ModifiedDaysService) {
+  constructor(private modifiedDaysService: ModifiedDaysService, private aggregatedLeavesService: AggregatedLeavesService) {
+    this.freeDays = this.modifiedDaysService.getFreeDays();
+    this.workDays = this.modifiedDaysService.getWorkDays();
+    this.leaveDatesRanges = this.aggregatedLeavesService.getUserLeaveDates();
     moment.locale('hu');
   }
 }
