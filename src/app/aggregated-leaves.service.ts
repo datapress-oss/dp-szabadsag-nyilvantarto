@@ -12,7 +12,7 @@ export class AggregatedLeavesService {
   private dateFormat = 'YYYY-MM-DD';
   aggregatedLeaves: Array<AggregatedLeave> = [];
 
-  public getUserLeaveDates(): Array<DateRange> {
+  public getUserLeaveDatesRanges(): Array<DateRange> {
     const leaveDatesRanges: Array<DateRange> = [];
     this.aggregatedLeaves.forEach(aggregatedLeave => {
       if (aggregatedLeave.name === this.authService.loggedInUser.username) {

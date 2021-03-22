@@ -3,10 +3,10 @@
     <div class="col">
       <div class="row">
         <div class="col-xl-6 col-lg-5 col-md-6 col">
-          {{ holiday.from.toDate() | date:dateFormat }}
+          {{ moment(holiday.from).format(dateFormat) }}
         </div>
         <div class="col-xl-6 col-lg-5 col-md-6 col">
-          {{ holiday.to.toDate() | date:dateFormat }}
+          {{ moment(holiday.to).format(dateFormat) }}
         </div>
       </div>
     </div>

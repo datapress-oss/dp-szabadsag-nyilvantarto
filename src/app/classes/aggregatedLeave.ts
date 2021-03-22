@@ -4,7 +4,7 @@ export enum HolidayStatus {
   accepted
 }
 
-interface Holiday {
+export interface Holiday {
   status: HolidayStatus;
   groupId: number;
   from: string;

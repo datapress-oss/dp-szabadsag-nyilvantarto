@@ -157,7 +157,7 @@ export class DateManagerService {
   constructor(private modifiedDaysService: ModifiedDaysService, private aggregatedLeavesService: AggregatedLeavesService) {
     this.freeDays = this.modifiedDaysService.getFreeDays();
     this.workDays = this.modifiedDaysService.getWorkDays();
-    this.leaveDatesRanges = this.aggregatedLeavesService.getUserLeaveDates();
+    this.leaveDatesRanges = this.aggregatedLeavesService.getUserLeaveDatesRanges();
     moment.locale('hu');
   }
 }

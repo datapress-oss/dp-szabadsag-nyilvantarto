@@ -3,7 +3,8 @@ import { DateManagerService } from './../date-manager.service';
 import * as moment from 'moment';
 import { Year } from './../classes/calendarClasses';
 import { mockEmployees, Employee } from './../classes/summaryClasses';
-import { mockHolidays, Holiday } from './../classes/holiday';
+import { AggregatedLeavesService } from './../aggregated-leaves.service';
+import { Holiday, HolidayStatus } from './../classes/aggregatedLeave';
 import { AuthService } from './../auth.service';
 import { faUndo, faSave } from '@fortawesome/free-solid-svg-icons';
 
@@ -14,7 +15,8 @@ import { faUndo, faSave } from '@fortawesome/free-solid-svg-icons';
 export class UserComponent implements OnInit {
   faUndo = faUndo;
   faSave = faSave;
-  mockHolidays = mockHolidays;
+  // TODO: use a get method to get holydays (inside aggregated-leaves.service)
+  mockHolidays = this.aggregatedLeavesService.aggregatedLeaves[0].holidays;
   currentYearCalendar: Year;
   currentUser: Employee;
 
@@ -36,7 +38,11 @@ export class UserComponent implements OnInit {
     console.log('user settings loaded from db');
   }
 
-  constructor(private dateManager: DateManagerService, private auth: AuthService) {
+  constructor(
+    private dateManager: DateManagerService,
+    private auth: AuthService,
+    private aggregatedLeavesService: AggregatedLeavesService
+    ) {
     this.currentYearCalendar = this.dateManager.createCalendar(moment().year());
   }
 
