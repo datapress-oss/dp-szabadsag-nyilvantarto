@@ -11,6 +11,7 @@ export class AuthService {
     username: null,
     roles: []
   };
+  isLoggedIn = false;
   private userLogInEvent = new BehaviorSubject<LoggedInUser>(null);
 
   logIn(username: string, password: string): boolean {
@@ -22,6 +23,7 @@ export class AuthService {
       // success
       this.loggedInUser.username = foundUser.username;
       this.loggedInUser.roles = foundUser.roles;
+      this.isLoggedIn = true;
       // emit login event with 'loggedInUser'
       this.userLogInEvent.next(this.loggedInUser);
       this.router.navigate(['/user']);
@@ -30,18 +32,12 @@ export class AuthService {
     return false;
   }
 
-  isLoggedIn(): boolean {
-    if (localStorage.getItem('loggedInUser') === null) {
-      return false;
-    }
-    return true;
-  }
 
   logOut(): void {
     // remove loggedInUser data
     this.loggedInUser.username = null;
     this.loggedInUser.roles = null;
-    localStorage.removeItem('loggedInUser');
+    this.isLoggedIn = false;
     this.router.navigate(['/login']);
   }
 

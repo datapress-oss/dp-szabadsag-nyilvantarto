@@ -15,17 +15,14 @@ export class LoginComponent implements OnInit {
     passwordInput: new FormControl(),
   });
 
-
   onLogIn(): void {
     this.auth.logIn(this.userLoginForm.value.usernameInput, this.userLoginForm.value.passwordInput);
   }
 
-
-
   constructor(private auth: AuthService) {}
 
   ngOnInit(): void {
-    this.isLoggedIn = this.auth.isLoggedIn();
+    this.isLoggedIn = this.auth.isLoggedIn;
   }
 
 }
