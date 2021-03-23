@@ -16,10 +16,7 @@ export class AggregatedLeavesService {
     const leaveDatesRanges: Array<DateRange> = [];
     this.aggregatedLeaves.forEach(aggregatedLeave => {
       if (aggregatedLeave.name === this.authService.loggedInUser.username) {
-        console.log(`Username: ${this.authService.loggedInUser.username}, match?: ${aggregatedLeave.name === this.authService.loggedInUser.username}`);
-        console.log(aggregatedLeave.name);
         aggregatedLeave.holidays.forEach(holiday => {
-          console.log(holiday);
           if (holiday.status === HolidayStatus.accepted || holiday.status === HolidayStatus.pending) {
             const from = moment(holiday.from, this.dateFormat);
             const to = moment(holiday.to, this.dateFormat);

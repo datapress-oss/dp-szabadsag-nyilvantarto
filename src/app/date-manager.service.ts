@@ -155,7 +155,6 @@ export class DateManagerService {
     private modifiedDaysService: ModifiedDaysService,
     private aggregatedLeavesService: AggregatedLeavesService,
   ) {
-    console.log('lol');
     this.freeDays = this.modifiedDaysService.getFreeDays();
     this.workDays = this.modifiedDaysService.getWorkDays();
     moment.locale('hu');
