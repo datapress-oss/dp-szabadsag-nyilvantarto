@@ -50,8 +50,7 @@
           *ngFor="let month of currentYearCalendar.months; index as i"
         >
           <app-calendar
-            [currentMonth]="i+1"
-            [calendarYear]="currentYearCalendar"
+            [calendarMonth]="month"
             [outputOnly]="true"
           >
           </app-calendar>

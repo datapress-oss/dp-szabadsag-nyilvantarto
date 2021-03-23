@@ -1,7 +1,7 @@
 <div class="app-calendar-component">
     <app-month-view
-      [monthTitle]="calendarYear.months[currentMonth-1].title"
-      [rows]="calendarYear.months[currentMonth-1].weeks"
+      [monthTitle]="calendarMonth.title"
+      [rows]="calendarMonth.weeks"
       (selectNewDay)="selectNewDayEventHandler($event)"
       [disabled]="outputOnly"
     >

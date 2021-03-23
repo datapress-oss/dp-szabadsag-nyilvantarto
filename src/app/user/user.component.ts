@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DateManagerService } from './../date-manager.service';
-import * as moment from 'moment';
 import { Year } from './../classes/calendarClasses';
 import { mockEmployees, Employee } from './../classes/summaryClasses';
 import { AggregatedLeavesService } from './../aggregated-leaves.service';
@@ -17,7 +16,6 @@ export class UserComponent implements OnInit {
   faSave = faSave;
   // TODO: use a get method to get holydays (inside aggregated-leaves.service)
   mockHolidays = this.aggregatedLeavesService.aggregatedLeaves[0].holidays;
-  currentYearCalendar: Year;
   currentUser: Employee;
 
   public userHolidayAcceptEventHandler(holydayOutput: Holiday): void {
@@ -39,11 +37,10 @@ export class UserComponent implements OnInit {
   }
 
   constructor(
-    private dateManager: DateManagerService,
+    public dateManager: DateManagerService,
     private auth: AuthService,
     private aggregatedLeavesService: AggregatedLeavesService
     ) {
-    this.currentYearCalendar = this.dateManager.createCalendar(moment().year());
   }
 
   ngOnInit(): void {

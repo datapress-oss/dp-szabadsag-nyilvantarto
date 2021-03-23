@@ -5,6 +5,7 @@ const moment = extendMoment(Moment);
 import * as Calendar from './classes/calendarClasses';
 import { ModifiedDaysService } from './modified-days.service';
 import { AggregatedLeavesService } from './aggregated-leaves.service';
+import { Year } from './classes/calendarClasses';
 
 
 @Injectable({
@@ -14,6 +15,7 @@ export class DateManagerService {
   private freeDays: Calendar.MarkedDay[] = [];
   private workDays: Calendar.MarkedDay[] = [];
   private leaveDatesRanges: Array<DateRange> = [];
+  public currentYearCalendar: Year = null;
   private dateFormat = 'YYYY-MM-DD';
 
   public createCalendar(
@@ -82,16 +84,6 @@ export class DateManagerService {
     return weeks;
   }
 
-  // date utility functions (used in 'generateBaseNonWorkingDay()' below)
-  private getDaysArray(start: Date, end: Date): Array<moment.Moment> {
-    const dates = [];
-    for (const arr = [], dt = new Date(start); dt <= end; dt.setDate(dt.getDate() + 1)) {
-      arr.push(new Date(dt));
-      dates.push(moment(dt, this.dateFormat));
-    }
-    return dates;
-}
-
   private generateBaseNonWorkingDay(
     date: moment.Moment,
     withHoliday: boolean
@@ -119,11 +111,9 @@ export class DateManagerService {
     // set dayStatus to 'Leave' if there's a match
     this.leaveDatesRanges.forEach(leaveDatesRange => {
       if (leaveDatesRange.contains(date)) {
-        console.log(`date: ${date.format(this.dateFormat)}, contains: ${leaveDatesRange.contains(date)}`);
         dayStatus = Calendar.DayStatus.Leave;
       }
     });
-
     const day: Calendar.Day = {
       date,
       status: dayStatus
@@ -159,5 +149,6 @@ export class DateManagerService {
     this.workDays = this.modifiedDaysService.getWorkDays();
     this.leaveDatesRanges = this.aggregatedLeavesService.getUserLeaveDatesRanges();
     moment.locale('hu');
+    this.currentYearCalendar = this.createCalendar(moment().year());
   }
 }

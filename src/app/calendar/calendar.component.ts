@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Year } from './../classes/calendarClasses';
+import { Month, Year } from './../classes/calendarClasses';
 import * as animation from './../animations';
 
 @Component({
@@ -13,8 +13,7 @@ import * as animation from './../animations';
 
 })
 export class CalendarComponent implements OnInit {
-  @Input() calendarYear: Year;
-  @Input() currentMonth: number;
+  @Input() calendarMonth: Month;
   @Input() outputOnly = false;
 
   constructor() {}
