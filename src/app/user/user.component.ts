@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DateManagerService } from './../date-manager.service';
-import { Year } from './../classes/calendarClasses';
 import { mockEmployees, Employee } from './../classes/summaryClasses';
 import { AggregatedLeavesService } from './../aggregated-leaves.service';
-import { Holiday, HolidayStatus } from './../classes/aggregatedLeave';
+import { Holiday } from './../classes/aggregatedLeave';
 import { AuthService } from './../auth.service';
 import { faUndo, faSave } from '@fortawesome/free-solid-svg-icons';
 
@@ -48,5 +47,9 @@ export class UserComponent implements OnInit {
     this.currentUser = mockEmployees.find(
       user => user.name === this.auth.loggedInUser.username
     );
+    this.auth.userLogInEventListener().subscribe(event => {
+      this.dateManager.setLeaveDates();
+      this.dateManager.setYearCalendar();
+    });
   }
 }

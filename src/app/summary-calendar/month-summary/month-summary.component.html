@@ -30,7 +30,7 @@
           </td>
         </ng-template>
         <td
-          *ngFor="let day of combineWeeksToDays(currentYearCalendar.months[selectedMonth].weeks); let currentDayIndex = index;"
+          *ngFor="let day of combineWeeksToDays(dateManager.currentYearCalendar.months[selectedMonth].weeks); let currentDayIndex = index;"
           [class.NonWorking]="day.status === 0"
           [class.Work]="day.status === 1 || day.status === 2"
         >

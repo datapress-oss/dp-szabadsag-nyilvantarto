@@ -7,7 +7,6 @@ import { ModifiedDaysService } from './modified-days.service';
 import { AggregatedLeavesService } from './aggregated-leaves.service';
 import { Year } from './classes/calendarClasses';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -122,6 +121,14 @@ export class DateManagerService {
     return day;
   }
 
+  public setYearCalendar(): void {
+    this.currentYearCalendar = this.createCalendar(moment().year());
+  }
+
+  public setLeaveDates(): void {
+    this.leaveDatesRanges = this.aggregatedLeavesService.getUserLeaveDatesRanges();
+  }
+
   private getNumberOfMonthWeeks(date: moment.Moment): number {
     const actualDate = date;
     const firstDayPosition = date.weekday();
@@ -144,11 +151,15 @@ export class DateManagerService {
   //   return this.actualUser.vacations.findIndex((h) => h.isSame(date)) >= 0;
   // }
 
-  constructor(private modifiedDaysService: ModifiedDaysService, private aggregatedLeavesService: AggregatedLeavesService) {
+  constructor(
+    private modifiedDaysService: ModifiedDaysService,
+    private aggregatedLeavesService: AggregatedLeavesService,
+  ) {
+    console.log('lol');
     this.freeDays = this.modifiedDaysService.getFreeDays();
     this.workDays = this.modifiedDaysService.getWorkDays();
-    this.leaveDatesRanges = this.aggregatedLeavesService.getUserLeaveDatesRanges();
     moment.locale('hu');
-    this.currentYearCalendar = this.createCalendar(moment().year());
+    this.setLeaveDates();
+    this.setYearCalendar();
   }
 }

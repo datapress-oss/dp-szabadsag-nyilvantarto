@@ -13,7 +13,6 @@ export class MonthSummaryComponent implements OnInit {
   @Input() year: number;
   @Input() selectedMonth: number;
   @Input() employees: Array<Employee>;
-  currentYearCalendar: Year;
 
   // combine the arrays inside 'weeks' array into one array
   combineWeeksToDays(weeks: any): Array<Day> {
@@ -48,9 +47,7 @@ export class MonthSummaryComponent implements OnInit {
     return name;
   }
 
-  constructor(private dateManager: DateManagerService) {
-    this.currentYearCalendar = this.dateManager.createCalendar(moment().year());
-  }
+  constructor(public dateManager: DateManagerService) {}
 
   ngOnInit(): void {
   }

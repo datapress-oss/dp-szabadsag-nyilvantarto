@@ -4,7 +4,6 @@ import { CustomeDay } from './../classes/modifiedDay';
 import { DateManagerService } from './../date-manager.service';
 import { Year } from './../classes/calendarClasses';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import * as moment from 'moment';
 
 @Component({
   templateUrl: './admin.component.html',
@@ -12,7 +11,6 @@ import * as moment from 'moment';
 })
 export class AdminComponent implements OnInit {
   modalRef: BsModalRef;
-  currentYearCalendar: Year;
   freeDays: Array<CustomeDay>;
   workDays: Array<CustomeDay>;
 
@@ -58,10 +56,9 @@ export class AdminComponent implements OnInit {
 
   constructor(
     public modifiedDaysService: ModifiedDaysService,
-    private dateManager: DateManagerService,
+    public dateManager: DateManagerService,
     private modalService: BsModalService
     ) {
-    this.currentYearCalendar = this.dateManager.createCalendar(moment().year());
   }
 
   ngOnInit(): void {
