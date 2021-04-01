@@ -19,6 +19,7 @@
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
-    "preserveWhitespaces": true
+    "preserveWhitespaces": true,
+    "strictTemplates": true,
   }
 }
