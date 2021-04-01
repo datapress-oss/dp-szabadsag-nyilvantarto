@@ -13,18 +13,22 @@ export class AdminComponent implements OnInit {
 
   public addFreeDayEventHandler(freeDay: CustomDay): void {
     this.modifiedDaysService.addFreeDay(freeDay);
+    this.dateManager.setYearCalendarAdmin();
   }
 
   public addWorkDayEventHandler(workDay: CustomDay): void {
     this.modifiedDaysService.addWorkDay(workDay);
+    this.dateManager.setYearCalendarAdmin();
   }
 
   public removeFreeDayEventHandler(freeDay: CustomDay): void {
     this.modifiedDaysService.removeFreeDay(freeDay);
+    this.dateManager.setYearCalendarAdmin();
   }
 
   public removeWorkDayEventHandler(workDay: CustomDay): void {
     this.modifiedDaysService.removeWorkDay(workDay);
+    this.dateManager.setYearCalendarAdmin();
   }
 
   public adminStateSaveEventHandler(): void {

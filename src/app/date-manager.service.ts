@@ -50,6 +50,7 @@ export class DateManagerService {
     };
     return monthCalendar;
   }
+
   private generateWeeksOfMonth(
     date: moment.Moment,
     withLeaveDay: boolean
@@ -127,7 +128,8 @@ export class DateManagerService {
   }
 
   public setYearCalendarAdmin(): void {
-    this.currentYearCalendarAdmin = this.createCalendar(moment().year(), false);
+    const calendar = this.createCalendar(moment().year(), false);
+    this.currentYearCalendarAdmin = calendar;
   }
 
   public setLeaveDates(): void {
