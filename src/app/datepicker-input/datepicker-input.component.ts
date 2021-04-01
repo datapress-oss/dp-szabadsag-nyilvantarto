@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
 import { BsDatepickerConfig, BsLocaleService } from 'ngx-bootstrap/datepicker';
-import { CustomeDay } from './../classes/modifiedDay';
+import { CustomDay } from './../classes/modifiedDay';
 import * as moment from 'moment';
 import { defineLocale } from 'ngx-bootstrap/chronos';
 import { huLocale } from 'ngx-bootstrap/locale';
@@ -16,11 +16,11 @@ defineLocale('hu', huLocale);
 export class DatepickerInputComponent implements OnInit {
   private dateFormat = 'YYYY-MM-DD';
   @Input() theme: string;
-  // array storing the custome days
-  @Input() customeDays: Array<CustomeDay> = [];
+  // array storing the custom days
+  @Input() customDays: Array<CustomDay> = [];
   // output events
-  @Output() addCustomeDayEvent: EventEmitter<CustomeDay> = new EventEmitter<CustomeDay>();
-  @Output() removeCustomeDayEvent: EventEmitter<CustomeDay> = new EventEmitter<CustomeDay>();
+  @Output() addCustomDayEvent: EventEmitter<CustomDay> = new EventEmitter<CustomDay>();
+  @Output() removeCustomDayEvent: EventEmitter<CustomDay> = new EventEmitter<CustomDay>();
   // calendar properties
   bsConfig: Partial<BsDatepickerConfig>;
   bsValue = new Date();
@@ -39,21 +39,21 @@ export class DatepickerInputComponent implements OnInit {
     // validate description (must not be empty)
     if (!(this.title === '' || this.title === null)) {
       // construct new CustomeDay obj
-      const customeDay: CustomeDay = {
+      const customDay: CustomDay = {
         date: moment(day, this.dateFormat),
         title: this.title
       };
-      // emit 'customeDay'
-      this.addCustomeDayEvent.emit(customeDay);
+      // emit 'customDay'
+      this.addCustomDayEvent.emit(customDay);
       // clear form values to default
       this.bsValue = new Date();
       this.title = '';
     }
   }
 
-  onRemoveDate(customeDay: CustomeDay): void {
+  onRemoveDate(customDay: CustomDay): void {
     // emit the customeDay to be removed
-    this.removeCustomeDayEvent.emit(customeDay);
+    this.removeCustomDayEvent.emit(customDay);
   }
 
   constructor(private localeService: BsLocaleService) {

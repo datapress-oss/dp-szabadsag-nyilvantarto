@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ModifiedDay, CustomeDay } from './classes/modifiedDay';
+import { ModifiedDay, CustomDay, modifiedDay } from './classes/modifiedDay';
 import * as moment from 'moment';
 
 @Injectable({
@@ -7,72 +7,64 @@ import * as moment from 'moment';
 })
 export class ModifiedDaysService {
   // mock data for datepickers
-  modifiedDay: ModifiedDay = {
-    year: 2020,
-    freeDays: [
-      {
-        title: 'Újév',
-        date: moment('2021-01-01', 'YYYY-MM-DD')
-      },
-      {
-        title: ' Március 15',
-        date: moment('2021-03-15', 'YYYY-MM-DD')
-      },
-      {
-        title: ' Augusztus 20',
-        date: moment('2021-08-20', 'YYYY-MM-DD')
-      },
-      {
-        title: ' Augusztus 21',
-        date: moment('2021-08-21', 'YYYY-MM-DD')
-      },
-      {
-        title: ' December 21',
-        date: moment('2021-12-24', 'YYYY-MM-DD')
-      }
-    ],
-    workDays: [
-      {
-        title: 'Augusztus 21',
-        date: moment('2021-08-29', 'YYYY-MM-DD')
-      },
-      {
-        title: ' December 24',
-        date: moment('2021-12-12', 'YYYY-MM-DD')
-      }
-    ],
-    timestamp: '1611658840'
-  };
+  // use 'cloneMockData()' to create a clone of the original object and not a reference, so the original will not be mutated
+  modifiedDay = this.cloneMockData();
 
-  getFreeDays(): Array<CustomeDay> {
+  // this method is needed because when cloning an object, only primitive data types are cloned, but we need moment.Moment for dates
+  cloneMockData(): ModifiedDay {
+    const modifiedDayRaw: ModifiedDay = JSON.parse(JSON.stringify(modifiedDay));
+    const modifiedDayWithMoment: ModifiedDay = {
+      year: modifiedDayRaw.year,
+      freeDays: [],
+      workDays: [],
+      timestamp: modifiedDayRaw.timestamp
+    };
+    // convert dates to moment dates (beacause of JSON parse)
+    modifiedDayRaw.freeDays.forEach(freeDay => {
+      modifiedDayWithMoment.freeDays.push({ title: freeDay.title, date: moment(freeDay.date) });
+    });
+    modifiedDayRaw.workDays.forEach(workDay => {
+      modifiedDayWithMoment.workDays.push({ title: workDay.title, date: moment(workDay.date) });
+    });
+    return modifiedDayWithMoment;
+  }
+
+  getFreeDays(): Array<CustomDay> {
     return this.modifiedDay.freeDays;
   }
 
-  getWorkDays(): Array<CustomeDay> {
+  getWorkDays(): Array<CustomDay> {
     return this.modifiedDay.workDays;
   }
 
-  addFreeDay(freeDay: CustomeDay): void {
+  addFreeDay(freeDay: CustomDay): void {
     this.modifiedDay.freeDays.push(freeDay);
   }
 
-  addWorkDay(workDay: CustomeDay): void {
+  addWorkDay(workDay: CustomDay): void {
     this.modifiedDay.workDays.push(workDay);
+    console.log(this.modifiedDay.workDays);
+    console.log(modifiedDay.workDays);
   }
 
-  removeFreeDay(freeDay: CustomeDay): void {
-    const filteredArr = this.modifiedDay.freeDays.filter((customeDay) => {
-      return customeDay !== freeDay;
+  removeFreeDay(freeDay: CustomDay): void {
+    const filteredArr = this.modifiedDay.freeDays.filter((customDay) => {
+      return customDay !== freeDay;
     });
     this.modifiedDay.freeDays = filteredArr;
   }
 
-  removeWorkDay(workDay: CustomeDay): void {
-    const filteredArr = this.modifiedDay.workDays.filter((customeDay) => {
-      return customeDay !== workDay;
+  removeWorkDay(workDay: CustomDay): void {
+    const filteredArr = this.modifiedDay.workDays.filter((customDay) => {
+      return customDay !== workDay;
     });
     this.modifiedDay.workDays = filteredArr;
   }
 
-  constructor() { }
+  revertCustomDays(): void {
+    this.modifiedDay = this.cloneMockData();
+  }
+
+  constructor() {
+  }
 }

@@ -28,7 +28,7 @@
       </button>
     </div>
   </div>
-  <div class="row mb-2" *ngFor="let day of customeDays; let i = index">
+  <div class="row mb-2" *ngFor="let day of customDays; let i = index">
     <div class="col-5 border border">
       <div class="output">
         <p>{{ day.title }}</p>
@@ -40,7 +40,7 @@
       </div>
     </div>
     <div class="col-xl-1 col-1 pt-2">
-      <button class="btn btn-danger" (click)="onRemoveDate(customeDays[i])">
+      <button class="btn btn-danger" (click)="onRemoveDate(customDays[i])">
         <fa-icon [icon]="faTrash"></fa-icon>
       </button>
     </div>

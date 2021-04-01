@@ -1,8 +1,7 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ModifiedDaysService } from './../modified-days.service';
-import { CustomeDay } from './../classes/modifiedDay';
+import { CustomDay } from './../classes/modifiedDay';
 import { DateManagerService } from './../date-manager.service';
-import { Year } from './../classes/calendarClasses';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
@@ -11,42 +10,32 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 })
 export class AdminComponent implements OnInit {
   modalRef: BsModalRef;
-  freeDays: Array<CustomeDay>;
-  workDays: Array<CustomeDay>;
 
-  private setCustomeDays(): void {
-    this.freeDays = this.modifiedDaysService.getFreeDays();
-    this.workDays = this.modifiedDaysService.getWorkDays();
-  }
-
-  public addFreeDayEventHandler(freeDay: CustomeDay): void {
+  public addFreeDayEventHandler(freeDay: CustomDay): void {
     this.modifiedDaysService.addFreeDay(freeDay);
-    // refresh local array for Input() in calendar preview
-    this.freeDays = [...this.modifiedDaysService.getFreeDays()];
-
   }
 
-  public addWorkDayEventHandler(workDay: CustomeDay): void {
+  public addWorkDayEventHandler(workDay: CustomDay): void {
     this.modifiedDaysService.addWorkDay(workDay);
-    // refresh local array for Input() in calendar preview
-    this.workDays = [...this.modifiedDaysService.getWorkDays()];
   }
 
-  public removeFreeDayEventHandler(freeDay: CustomeDay): void {
+  public removeFreeDayEventHandler(freeDay: CustomDay): void {
     this.modifiedDaysService.removeFreeDay(freeDay);
-    this.setCustomeDays();
   }
 
-  public removeWorkDayEventHandler(workDay: CustomeDay): void {
+  public removeWorkDayEventHandler(workDay: CustomDay): void {
     this.modifiedDaysService.removeWorkDay(workDay);
-    this.setCustomeDays();
   }
 
   public adminStateSaveEventHandler(): void {
+    // refresh local arrays
     console.log('admin state saved to db');
   }
 
   public adminStateDiscardEventHandler(): void {
+    // this.dateManager.currentYearCalendarAdmin.months = null;
+    this.modifiedDaysService.revertCustomDays();
+    this.dateManager.setYearCalendarAdmin();
     console.log('admin state loaded from db');
   }
 
@@ -62,7 +51,7 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.setCustomeDays();
+    this.dateManager.setYearCalendarAdmin();
   }
 
 }

@@ -11,15 +11,14 @@ import { Year } from './classes/calendarClasses';
   providedIn: 'root'
 })
 export class DateManagerService {
-  private freeDays: Calendar.MarkedDay[] = [];
-  private workDays: Calendar.MarkedDay[] = [];
   private leaveDatesRanges: Array<DateRange> = [];
-  public currentYearCalendar: Year = null;
+  public currentYearCalendar: Year = this.createCalendar(moment().year(), true);
+  public currentYearCalendarAdmin: Year = this.createCalendar(moment().year(), false);
   private dateFormat = 'YYYY-MM-DD';
 
   public createCalendar(
     requestedYear: number, // = moment().year(),
-    withHoliday: boolean = false
+    withLeaveDay: boolean = false
   ): Calendar.Year {
     const actualDate = moment(new Date(requestedYear, 0, 1));
 
@@ -32,7 +31,7 @@ export class DateManagerService {
 
     for (let index = 0; index < 12; index++) {
       calendar.months.push(
-        this.generateMonthCalendar(actualDate.clone(), withHoliday)
+        this.generateMonthCalendar(actualDate.clone(), withLeaveDay)
       );
 
       actualDate.add(1, 'month');
@@ -43,17 +42,17 @@ export class DateManagerService {
 
   private generateMonthCalendar(
     date: moment.Moment,
-    withHoliday: boolean = false
+    withLeaveDay: boolean = false
   ): Calendar.Month {
     const monthCalendar: Calendar.Month = {
       title: date.format('MMMM'),
-      weeks: this.generateWeeksOfMonth(date, withHoliday),
+      weeks: this.generateWeeksOfMonth(date, withLeaveDay),
     };
     return monthCalendar;
   }
   private generateWeeksOfMonth(
     date: moment.Moment,
-    withHoliday: boolean
+    withLeaveDay: boolean
   ): Calendar.Week[] {
     const lastDayInWeek = 7;
     const weeks: Calendar.Week[] = [];
@@ -71,7 +70,7 @@ export class DateManagerService {
         if (date.daysInMonth() >= dayCounter) {
           calendarWeek[day] = this.generateBaseNonWorkingDay(
             actualDate.clone(),
-            withHoliday
+            withLeaveDay
           );
           dayCounter++;
           weeks[week] = [...calendarWeek];
@@ -85,7 +84,7 @@ export class DateManagerService {
 
   private generateBaseNonWorkingDay(
     date: moment.Moment,
-    withHoliday: boolean
+    withLeaveDay: boolean
   ): Calendar.Day {
 
     // decide dayStatus based on wether it's a weekday or not
@@ -94,25 +93,27 @@ export class DateManagerService {
       : Calendar.DayStatus.Work;
 
     // decide dayStatus based on freeDays and workDays from DB
-    this.freeDays.forEach(freeDay => {
+    this.modifiedDaysService.getFreeDays().forEach(freeDay => {
       // set dayStatus to 'NonWorking' if there's a match
       if (freeDay.date.format(this.dateFormat) === date.format(this.dateFormat)) {
         dayStatus = Calendar.DayStatus.NonWorking;
       }
     });
-    this.workDays.forEach(workDay => {
+    this.modifiedDaysService.getWorkDays().forEach(workDay => {
       // set dayStatus to 'Work' if there's a match
       if (workDay.date.format(this.dateFormat) === date.format(this.dateFormat)) {
         dayStatus = Calendar.DayStatus.Work;
       }
     });
+    if (withLeaveDay) {
+      // set dayStatus to 'Leave' if there's a match
+      this.leaveDatesRanges.forEach(leaveDatesRange => {
+        if (leaveDatesRange.contains(date)) {
+          dayStatus = Calendar.DayStatus.Leave;
+        }
+      });
+    }
 
-    // set dayStatus to 'Leave' if there's a match
-    this.leaveDatesRanges.forEach(leaveDatesRange => {
-      if (leaveDatesRange.contains(date)) {
-        dayStatus = Calendar.DayStatus.Leave;
-      }
-    });
     const day: Calendar.Day = {
       date,
       status: dayStatus
@@ -122,7 +123,11 @@ export class DateManagerService {
   }
 
   public setYearCalendar(): void {
-    this.currentYearCalendar = this.createCalendar(moment().year());
+    this.currentYearCalendar = this.createCalendar(moment().year(), true);
+  }
+
+  public setYearCalendarAdmin(): void {
+    this.currentYearCalendarAdmin = this.createCalendar(moment().year(), false);
   }
 
   public setLeaveDates(): void {
@@ -138,27 +143,11 @@ export class DateManagerService {
     return (numberOfDaysInMonth + firstDayPosition + (6 - lastDayPosition)) / 7;
   }
 
-  private isWorkday(date: moment.Moment): boolean {
-    return this.workDays.findIndex((d) => d.date.isSame(date)) >= 0;
-  }
-
-  private isFreeday(date: moment.Moment): boolean {
-    return this.freeDays.findIndex((d) => d.date.isSame(date)) >= 0;
-  }
-
-  // private isOwnHoliday(date: moment.Moment): boolean {
-  //   // return this.ownHolidays.findIndex((h) => h.isSame(date)) >= 0;
-  //   return this.actualUser.vacations.findIndex((h) => h.isSame(date)) >= 0;
-  // }
-
   constructor(
     private modifiedDaysService: ModifiedDaysService,
     private aggregatedLeavesService: AggregatedLeavesService,
   ) {
-    this.freeDays = this.modifiedDaysService.getFreeDays();
-    this.workDays = this.modifiedDaysService.getWorkDays();
     moment.locale('hu');
     this.setLeaveDates();
-    this.setYearCalendar();
   }
 }
