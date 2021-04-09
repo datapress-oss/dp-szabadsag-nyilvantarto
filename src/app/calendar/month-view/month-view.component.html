@@ -19,11 +19,11 @@
               class="btn btn-sm"
               *ngIf="col"
               [class.userSelectedDay]="userSelectedDays.includes(col)"
-              [class.NonWorking]="col.status === 0"
-              [class.Work]="col.status === 1"
-              [class.Leave]="col.status === 2"
+              [class.NonWorking]="col.status === dayStatus.NonWorking"
+              [class.Work]="col.status === dayStatus.Work"
+              [class.Leave]="col.status === dayStatus.Leave"
               [class.btn-1-char]="is1CharLong(col.date)"
-              [disabled]="disabled || col.status === 2"
+              [disabled]="disabled || col.status === dayStatus.Leave || col.status === dayStatus.NonWorking"
               (click)="onDayClick(col);"
             >
               {{ col.date | date: 'd' }}

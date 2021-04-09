@@ -43,8 +43,6 @@ export class ModifiedDaysService {
 
   addWorkDay(workDay: CustomDay): void {
     this.modifiedDay.workDays.push(workDay);
-    console.log(this.modifiedDay.workDays);
-    console.log(modifiedDay.workDays);
   }
 
   removeFreeDay(freeDay: CustomDay): void {
